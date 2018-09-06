@@ -1,0 +1,171 @@
+p151
+
+<1번>
+
+#include <stdio.h>
+
+int main(void)
+{
+	double x;
+
+	printf("실수를 입력하시오: ");
+	scanf("%lf", &x);
+
+	printf("실수형식으로는 %f입니다.\n", x);
+
+	printf("지수형식으로는 %e입니다.\n", x);
+
+	return 0;
+}
+
+<2번>
+
+#include <stdio.h>
+
+int main(void)
+{
+	int x;
+	
+	printf("16진수 정수를 입력하시오: ");
+	scanf("%x", &x);
+	
+	printf("8진수로는 %o입니다.\n", x);
+	printf("10진수로는 %d입니다.\n", x);
+	printf("16진수로는 0x%x입니다.\n", x);
+
+	return 0;
+}
+
+<3번>
+
+#include <stdio.h>
+
+int main(void)
+{
+	int x = 10;
+	int y = 20;
+
+	printf("x=%d y=%d\n", x, y);
+	
+	x = 20;
+	y = 10;
+
+	printf("x=%d y=%d\n", x, y);
+
+	return 0;
+}
+
+<4번>
+
+#include <stdio.h>
+
+int main(void)
+{
+	double x, y, z, area;
+
+	printf("상자의 가로, 세로, 높이를 한번에 입력: ");
+	scanf("%lf %lf %lf", &x, &y, &z);
+
+	area = x*y*z;
+
+	printf("상자의 부피는 %lf입니다.", area);
+
+	return 0;
+}
+
+<5번>
+
+#include <stdio.h>
+#define METER 3.3058
+
+int main(void)
+{
+	int x;
+	double y;
+
+	printf("평을 입력하세요: ");
+	scanf("%d", &x);
+
+	y = METER*x;
+	
+	printf("%lf평방미터입니다. ", y);
+
+	return 0;
+	
+}
+
+<6번>
+
+#include <stdio.h>
+
+int main(void)
+{
+	float x = 3.32*10e-3;
+	float y = 9.76*10e-8;
+	float z;
+
+	z = x + y;
+
+	printf("%f", z);
+
+	return 0;
+}
+
+<7번>
+
+#include <stdio.h>
+
+int main(void)
+{
+	double m, v, E;
+
+	printf("질량: ");
+	scanf("%lf", &m);
+
+	printf("속도: ");
+	scanf("%lf", &v);
+
+	E = m*v*v / 2.0;
+
+	printf("운동에너지: %lf", E);
+
+	return 0;
+}
+
+<8번>
+
+#include <stdio.h>
+
+int main(void)
+{
+	char x = 'a';
+
+	printf("\'a\'+1, \'a\'+2, \'a\'+3\n");
+
+	printf(" %c      %c      %c\n", x + 1, x + 2, x + 3);
+
+	return 0;
+}
+
+<9번>
+
+#include <stdio.h>
+
+int main(void)
+{
+
+	printf("\a화재가 발생하였습니다.\a\n");
+
+	return 0;
+}
+
+<10번>
+
+#include <stdio.h>
+
+int main(void)
+{
+	printf("\"ASCII code\", \'A\', \'B\', \'C\'\n\\t \\a \\n");
+
+	return 0;
+}

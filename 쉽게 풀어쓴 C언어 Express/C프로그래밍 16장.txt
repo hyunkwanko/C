@@ -1,0 +1,580 @@
+1번
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+	FILE *fp1;
+	FILE *fp2;
+
+	char file1[100];
+	char file2[100];
+
+	printf("첫 번째 파일이름: ");
+	scanf("%s", file1);
+
+	printf("두 번째 파일이름: ");
+	scanf("%s", file2);
+
+	if ((fp1 = fopen(file1, "r")) == NULL)
+	{
+		fprintf(stderr, "%s 파일을 열 수 없습니다.\n", file1);
+		exit(1);
+	}
+
+	if ((fp2 = fopen(file1, "r")) == NULL)
+	{
+		fprintf(stderr, "%s 파일을 열 수 없습니다.\n", file2);
+		exit(1);
+	}
+
+	while (1)
+	{
+		char c1 = fgetc(fp1);
+		char c2 = fgetc(fp2);
+
+		if (c1 != c2)
+		{
+			printf("두 파일은 서로 다릅니다.\n");
+			return 0;
+		}
+
+		if (c1 == EOF || c2 == EOF)
+			break;
+	}
+
+	printf("두 파일은 서로 같습니다.\n");
+	fclose(fp1);
+	fclose(fp2);
+
+	return 0;
+}
+
+2번
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int main(void)
+{
+	FILE *fp1;
+	FILE *fp2;
+
+	char c;
+	char file1[100];
+	char file2[100];
+
+	printf("첫 번째 파일 이름: ");
+	scanf("%s", file1);
+	printf("두 번째 파일 이름: ");
+	scanf("%s", file2);
+
+	if ((fp1 = fopen(file1, "r")) == NULL)
+	{
+		fprintf(stderr, "파일 %s를 열 수 없습니다.\n", file1);
+		exit(1);
+	}
+
+	if ((fp2 = fopen(file2, "w")) == NULL)
+	{
+		fprintf(stderr, "파일 %s를 열 수 없습니다.\n", file2);
+		exit(1);
+	}
+
+	printf("입력 파일: ");
+
+	while (1)
+	{
+		c = fgetc(fp1);
+		if (c == EOF)
+			break;
+
+		fputc(toupper(c), fp2);
+
+		putchar(c);
+	}
+	printf("\n");
+	fclose(fp1);
+	fclose(fp2);
+
+	if ((fp2 = fopen(file2, "r")) == NULL)
+	{
+		fprintf(stderr, "파일 %s를 열 수 없습니다.\n", file2);
+		exit(1);
+	}
+
+	printf("출력 파일: ");
+
+	while (1)
+	{
+		c = fgetc(fp2);
+		if (c == EOF)
+			break;
+		putchar(c);
+	}
+	printf("\n");
+	fclose(fp2);
+	return 0;
+}
+
+3번
+#include <stdio.h>
+#define SIZE 100
+
+int main(void)
+{
+	char buffer[SIZE];
+
+	FILE *fp;
+	FILE *fp1;
+
+	char file1[SIZE] = "file1.bin";
+	char file2[SIZE] = "file2.bin";
+	int i = 0;
+	int count;
+
+	if ((fp = fopen(file1, "wb")) == NULL)
+	{
+		fprintf(stderr, "%s 파일을 열 수 없습니다.\n", file1);
+		return 1;
+	}
+
+	while (i < 10)
+	{
+		printf("%d번 입력: ", i + 1);
+		gets_s(buffer);
+		fwrite(buffer, sizeof(char), SIZE, fp);
+		i++;
+	}
+	
+	fclose(fp);
+
+	if ((fp = fopen(file1, "rb")) == NULL)
+	{
+		fprintf(stderr, "%s 파일을 열 수 없습니다.\n", file1);
+		return 1;
+	}
+	if ((fp1 = fopen(file2, "wb")) == NULL)
+	{
+		fprintf(stderr, "%s 파일을 열 수 없습니다.\n", file2);
+		return 1;
+	}
+
+	i = 0;
+	printf("\n복사파일 내용\n");
+	while ((count = fread(buffer, sizeof(char), SIZE, fp)) != 0)
+	{
+		printf("%d번 내용 : %s\n", i + 1, buffer);
+		fwrite(buffer, sizeof(char), count, fp1);
+		i++;
+	}
+	fclose(fp);
+	fclose(fp1);
+	return 0;
+}
+
+4번
+#include <stdio.h>
+#define SIZE 100
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+{
+	FILE *fp1;
+	FILE *fp2;
+	
+	char file1[SIZE];
+	char file2[SIZE];
+
+	char buffer1[SIZE];
+	char buffer2[SIZE];
+
+	printf("첫번째 파일 이름: ");
+	gets(file1);
+	printf("두번째 파일 이름: ");
+	gets(file2);
+	
+	if((fp1 = fopen(file1, "r")) == NULL)
+	{
+		fprintf(stderr,"파일을 열 수 없습니다.\n");
+		exit(1);
+	}
+
+	if((fp2 = fopen(file2, "r")) == NULL)
+	{
+		fprintf(stderr,"파일을 열 수 없습니다.\n");
+		exit(1);
+	}
+
+	while(1)
+	{
+		char *p1 = fgets(buffer1, SIZE, fp1);
+		char *p2 = fgets(buffer2, SIZE, fp2);
+		
+		if(p1 == NULL || p2 == NULL)
+			break;
+		if((strcmp(p1,p2) != 0))
+		{
+			printf("<< %s\n", buffer1);
+			printf(">> %s\n", buffer2);
+			printf("서로 일치하지 않습니다.\n");
+			return 0;
+		}
+	}
+	printf("파일은 서로 일치함\n");
+	fclose(fp1);
+	fclose(fp2);
+
+	return 0;
+}
+
+5번
+#include <stdio.h>
+#include <stdlib.h>
+
+struct student {
+	char name[20];
+	int kor;
+	int math;
+	int eng;
+};
+
+int main(void)
+{
+	struct student stu[3];
+	
+	FILE *fp1;
+	char file1[100];
+	int i;
+
+	printf("첫번째 파일 이름: ");
+	scanf("%s", &file1);
+
+
+	if ((fp1 = fopen(file1, "w")) == NULL)
+	{
+		fprintf(stderr, "파일을 열 수 없습니다.\n");
+		exit(1);
+	}
+
+	for (i = 0; i < 3; i++)
+	{
+		printf("이름: ");
+		scanf("%s", &stu[i].name);
+		printf("국어 점수: ");
+		scanf("%d", &stu[i].kor);
+		printf("수학 점수: ");
+		scanf("%d", &stu[i].math);
+		printf("영어 점수: ");
+		scanf("%d", &stu[i].eng);
+
+		fprintf(fp1, "%s %d %d %d", stu[i].name, stu[i].kor, stu[i].math, stu[i].eng);
+	}
+	fclose(fp1);
+
+	if ((fp1 = fopen(file1, "r")) == NULL)
+	{
+		fprintf(stderr, "파일을 열 수 없습니다.\n");
+		exit(1);
+	}
+
+	printf("이름 국어 수학 영어\n");
+	for (i = 0; i < 3; i++)
+	{
+		fscanf(fp1, "%s %d %d %d", &stu[i].name, &stu[i].kor, &stu[i].math, &stu[i].eng);
+
+		printf("%s %d %d %d\n", stu[i].name, stu[i].kor, stu[i].math, stu[i].eng);
+	}
+	printf("\n이름  평균\n");
+	for (i = 0; i < 3; i++)
+	{
+		fscanf(fp1, "%s %d %d %d", &stu[i].name, &stu[i].kor, &stu[i].math, &stu[i].eng);
+
+		printf("%s %f\n", stu[i].name, (stu[i].kor+stu[i].math+stu[i].eng) / 3.0);
+	}
+	fclose(fp1);
+	return 0;	
+}
+
+6번
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int main(void)
+{
+	FILE *fp;
+
+	char file[100];
+	int count = 0;
+	
+	printf("파일 이름을 입력하시오: ");
+	scanf("%s", &file);
+
+	if ((fp = fopen(file, "r")) == NULL)
+	{
+		fprintf(stderr, "파일을 열 수 없습니다.\n");
+		exit(1);
+	}
+
+	while (1)
+	{
+		char c = fgetc(fp);
+		if (c == EOF)
+			break;
+
+		if (isprint(c))
+			count++;
+	}
+	printf("인쇄 가능한 문자의 개수는 %d개입니다.\n", count);
+	fclose(fp);
+
+	return 0;
+}
+
+
+7번
+#include <stdio.h>
+#define SIZE 100
+
+int main(void)
+{
+	FILE *fp1 = NULL;
+	char fileName[SIZE];
+	char str[SIZE];
+
+	printf("파일 이름을 입력하시오: ");
+	gets_s(fileName);
+
+	if ((fp1 = fopen(fileName, "w")) == NULL)
+	{
+		fprintf(stderr, "파일을 열 수 없습니다.\n");
+		return 1;
+	}
+
+	while (1)
+	{
+		char *p = gets_s(str);
+		if (*p == '0')
+			break;
+
+		fprintf(fp1, "%s", str);		
+	}
+	fclose(fp1);
+	return 0;
+}
+
+8번
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 100
+
+int main(void)
+{
+	FILE *fp1;
+	FILE *fp2;
+
+	char file1[SIZE] = "test.txt";
+	char file2[SIZE] = "test1.txt";
+
+	int i;
+	int value;
+
+	if((fp1 = fopen(file1, "w")) == NULL)
+	{
+		fprintf(stderr,"파일을 열 수 없습니다.\n");
+		exit(1);
+	}
+	if((fp2 = fopen(file2, "wb")) == NULL)
+	{
+		fprintf(stderr,"파일을 열 수 없습니다.\n");
+		exit(1);
+	}
+
+	for(i = 0; i < 100; i++)
+	{
+		value = rand() % 100;
+		fprintf(fp1, "%d ", value);
+		fwrite(&value, sizeof(int), 1, fp2);
+	}
+	fclose(fp1);
+	fclose(fp2);
+	return 0;
+}
+9번
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+	FILE *fp1, *fp2, *fp3;
+	char file1[100], file2[100], file3[100];
+	char buffer[100];
+
+	if (argc >= 4)
+	{
+		strcpy(file1, argv[1]);
+		strcpy(file2, argv[2]);
+		strcpy(file3, argv[3]);
+	}
+	else
+	{
+		printf("인수가 부족합니다.\n");
+		return 0;
+	}
+	printf("%s 파일+ %s파일을 %s파일로 복사합니다.\n", file1, file2, file3);
+
+	if ((fp1 = fopen(file1, "r")) == NULL)
+	{
+		fprintf(stderr, "원본 파일 %s을 열 수 없습니다.\n", file1);
+		exit(1);
+	}
+	if ((fp2 = fopen(file2, "r")) == NULL)
+	{
+		fprintf(stderr, "원본 파일 %s을 열 수 없습니다.\n", file2);
+		exit(1);
+	}
+	if ((fp3 = fopen(file3, "w")) == NULL)
+	{
+		fprintf(stderr, "결과 파일 %s을 열 수 없습니다.\n", file3);
+		exit(1);
+	}
+	while (fgets(buffer, 100, fp1) != NULL)
+		fputs(buffer, fp3);
+	while (fgets(buffer, 100, fp2) != NULL)
+		fputs(buffer, fp3);
+	fclose(fp1);
+	fclose(fp2);
+	fclose(fp3);
+	return 0;
+}
+
+10번
+
+#include<stdio.h>
+#include<stdlib.h>
+#define SIZE 100
+int main()
+{
+	FILE* fp1 = NULL;
+	char buffer[SIZE];
+	int line_number = 1;
+	if ((fp1 = fopen("sample1.txt", "r")) == NULL)
+	{
+		fprintf(stderr, "파일을 열 수 없습니다.\n");
+		return 0;
+	}
+	while (fgets(buffer, SIZE, fp1) != NULL)
+	{
+		printf("%6d: %s", line_number, buffer);
+		line_number++;
+	}
+	printf("\n");
+	fclose(fp1);
+	return 0;
+}
+
+12번
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define SIZE 100
+int main()
+{
+	FILE* fp1 = NULL;
+	char fileName[SIZE];
+	char searchName[SIZE];
+	char buffer[SIZE];
+	int lineNumer = 0;
+	printf("파일 이름: ");
+	scanf("%s", fileName);
+	printf("탐색할 단어: ");
+	scanf("%s", searchName);
+
+	if ((fp1 = fopen(fileName, "r")) == NULL)
+	{
+		fprintf(stderr, "%s 파일을 열수없습니다.\n", fileName);
+		exit(1);
+	}
+	while (fgets(buffer, SIZE, fp1) != NULL)
+	{
+		lineNumer++;
+		if (strstr(buffer, searchName) != NULL)
+		{
+			printf("%s: %3d %s", fileName, lineNumer, buffer);
+		}
+	}
+	fclose(fp1);
+	return 0;
+}
+
+13번
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+{
+	FILE *fp1, *fp2;
+	char file1[100] = "t2.txt";
+	char file2[100] = "t3.txt";
+	char buffer[100];
+	int i = 1;
+	int j = 0;
+
+	if ((fp1 = fopen(file1, "w")) == NULL)
+	{
+		fprintf(stderr, "파일을 열 수 없습니다.\n");
+		exit(1);
+	}
+
+	fprintf(fp1, "Android 4.1, Jelly Brea, is the fastest and soomthest version of Android yet.");
+	fclose(fp1);
+
+	if ((fp1 = fopen(file1, "r")) == NULL)
+	{
+		fprintf(stderr, "파일을 열 수 없습니다.\n");
+		exit(1);
+	}
+	if ((fp2 = fopen(file2, "w")) == NULL)
+	{
+		fprintf(stderr, "파일을 열 수 없습니다.\n");
+		exit(1);
+	}
+
+	while (1)
+	{
+		char *p = fgets(buffer, 100, fp1);
+		if (p == NULL)
+			break;
+		
+		char *token[100];
+		token[0] = strtok(p, " ");
+		while (token[i] = strtok(NULL, " "))
+		{
+			i++;
+		}
+		
+		while (token[j] != NULL)
+		{
+			if (strcmp(token[j], "Android") == 0)
+			{
+				fprintf(fp2, "안드로이드 ");
+			}
+			else
+			{
+				fprintf(fp2, "%s ", token[j]);
+			}
+			j++;
+		}
+	}
+	fclose(fp1);
+	fclose(fp2);
+	return 0;
+	
+}

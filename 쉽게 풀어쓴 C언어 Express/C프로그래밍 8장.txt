@@ -1,0 +1,565 @@
+1번
+#include <stdio.h>
+#include <stdlib.h>
+
+int even(int n);
+int absolute(int n);
+int sign(int n);
+
+int main(void)
+{
+	int n;
+
+	printf("정수를 입력하시오: ");
+	scanf("%d", &n);
+
+	printf("even()의 결과: ");
+	if (even(n) == 1)
+		printf("짝수\n");
+	else if (even(n) == 0)
+		printf("홀수\n");
+
+	printf("absolute()의 결과: %d\n", absolute(n));
+	printf("sign()의 결과: ");
+	if (sign(n) == 1)
+		printf("양수\n");
+	else if (sign(n) == 0)
+		printf("0\n");
+	else if (sign(n) == -1)
+		printf("음수\n");
+		
+
+	return 0;
+}
+
+int even(int n)
+{
+	if (n % 2 == 0)
+		return 1;
+	else
+		return 0;
+}
+
+int absolute(int n)
+{
+	return (abs(n));
+}
+
+int sign(int n)
+{
+	if (n > 0)
+		return 1;
+	if (n == 0)
+		return 0;
+	if (n < 0)
+		return -1;
+}
+
+2번
+#include <stdio.h>
+
+double f_to_c(double F);
+
+int main(void)
+{
+	double F;
+
+	printf("화씨 온도를 입력하시오: ");
+	scanf("%lf", &F);
+	
+	printf("섭씨 온도는 %f도입니다. \n", f_to_c(F));
+
+	return 0;
+}
+
+double f_to_c(double F)
+{
+	double C;
+
+	C = 5.0 / 9.0 * (F - 32.0);
+
+	return C;
+}
+
+3번
+#include <stdio.h>
+
+double cal_area(double r);
+#define pi 3.141592
+
+int main(void)
+{
+	double r;
+
+	printf("원의 반지름을 입력하시오: ");
+	scanf("%lf", &r);
+
+	printf("원의 면적은 %f입니다\n", cal_area(r));
+
+	return 0;
+}
+
+double cal_area(double r)
+{
+	double area;
+
+	area = pi * r * r;
+	
+	return area;
+}
+
+4번
+#include <stdio.h>
+
+int get_tax(int a);
+
+int main(void)
+{
+	int a;
+
+	printf("소득을 입력하시오(만원): ");
+	scanf("%d", &a);
+	
+	printf("소득세는 %d만원입니다. \n", get_tax(a));
+
+	return 0;
+}
+
+int get_tax(int a)
+{
+	int sum;
+
+	if (a > 1000)
+	{
+		return (sum = a / 100 * 10);
+	}
+	else
+	{
+		return (sum = a / 100 * 8);
+	}
+}
+
+5번
+
+#include <stdio.h>
+#include <math.h>
+
+double sin_degree(double i);
+#define pi 3.141592
+
+int main(void)
+{
+	double i;
+
+	for (i = 0.0; i <= 180.0; i += 10.0)
+	{
+		printf("sin(%f)의 값은 %f\n", i, sin_degree(i));
+	}
+
+	return 0;
+}
+
+double sin_degree(double i)
+{
+	return sin(i*pi/180);
+}
+
+6번
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int b_rand(void);
+
+int main(void)
+{
+	int n;
+
+	srand((unsigned)time(NULL));
+
+	scanf("%d", &n);
+
+	for(int i = 1; i <= n; i++)
+	printf("%d ", b_rand());
+
+	return 0;
+}
+
+int b_rand(void)
+{
+	return (rand() % 2);
+}
+
+7번
+#include <stdio.h>
+#include <stdlib.h>
+
+int b_rand();
+int main(void)
+{
+	int x, y;
+	char op;
+	while (1)
+	{
+		printf("앞면 또는 뒷면(1 또는 0):");
+		scanf("%d", &x);
+		y = b_rand();
+		if (y == x)
+			printf("맞았습니다.\n");
+		else
+			printf("틀렸습니다.\n");
+		printf("계속하시겠습니까?(y 또는 n):");
+		scanf(" %c", &op);
+		if (op == 'n')
+			break;
+	}
+	return 0;
+}
+
+int b_rand(void)
+{
+	return (rand() % 2);
+}
+
+8번
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+double f_rand(int n);
+
+int main(void)
+{
+	int n;
+
+	srand((unsigned)time(NULL));
+
+	scanf("%d", &n);
+	
+	for (int i = 1; i <= n; i++)
+	{
+		printf("%f ", f_rand(n));
+	}
+
+	return 0;
+}
+
+double f_rand(int n)
+{
+	return (rand() / (double)RAND_MAX);
+}
+
+
+9번
+#include <stdio.h>
+
+void print_value(int n);
+
+int main(void)
+{
+	int n;
+
+	while (1)
+	{
+		printf("값을 입력하시오(종료는 음수): ");
+		scanf("%d", &n);
+
+		if (n < 0)
+			break;
+
+		print_value(n);
+
+		printf("\n");
+	}
+
+	return 0;
+}
+
+void print_value(int n)
+{
+	for (int i = 1; i <= n; i++)
+	{
+		printf("*");
+	}
+
+	return 0;
+}
+
+10번
+#include <stdio.h>
+
+int is_multiple(int n, int m);
+
+int main(void)
+{
+	int n, m;
+
+	printf("첫 번째 정수를 입력하시오: ");
+	scanf("%d", &n);
+
+	printf("듀 번째 정수를 입력하시오: ");
+	scanf("%d", &m);
+	
+	if (is_multiple(n, m) == 1)
+		printf("%d은 %d의 배수입니다. ", n, m);
+	else
+		printf("%d은 %d의 배수가 아닙니다. ", n, m);
+
+	return 0;
+}
+
+int is_multiple(int n, int m)
+{
+	if (n % m == 0)
+		return 1;
+	else
+		return 0;
+}
+
+11번
+#include <stdio.h>
+#include <math.h>
+
+double get_distance(double a, double b, double c, double d);
+
+int main(void)
+{
+	double a, b, c, d;
+	
+	printf("첫번째 점의 좌표를 입력하시오:(x, y) ");
+	scanf("%lf %lf", &a, &b);
+
+	printf("두번째 점의 좌표를 입력하시오:(x, y) ");
+	scanf("%lf %lf", &c, &d);
+
+	printf("두점 사이의 거리는 %f입니다. ", get_distance(a,b,c,d));
+	
+	return 0;
+}
+
+double get_distance(double a, double b, double c, double d)
+{
+	return sqrt((a - c)*(a - c) + (b - d)*(b - d));
+}
+
+12번
+#include <stdio.h>
+
+void is_prime(int n);
+
+int main(void)
+{
+	printf("2부터 100사이의 소수를 출력합니다.\n");
+
+	for (int i = 2; i <= 100; i++)
+	{
+		is_prime(i);
+	}
+
+	printf("\n");
+
+	return 0;
+}
+
+void is_prime(int n)
+{
+	int count = 0;
+	
+	for (int i = 1; i <= n; i++)
+	{
+		if (n % i == 0)
+			count++;
+	}
+
+	if (count == 2)
+		printf("%d ", n);
+
+	return 0;
+}
+13번
+#include <stdio.h>
+
+double factorial(int n);
+
+int main(void)
+{
+	int n;
+	double result = 0;
+
+	printf("어디까지 계산할까요: ");
+	scanf("%d", &n);
+	
+	for (int i = 0; i <= n; i++)
+	{
+		result += 1 / factorial(i);
+	}
+
+	printf("오일러의 수는 %f입니다.\n", result);
+
+	return 0;
+}
+
+double factorial(int n)
+{
+	int result = 1;
+
+	for (int i = 1; i <= n; i++)
+	{
+		result *= i;
+	}
+
+	return result;
+}
+
+
+
+
+14번
+#include <stdio.h>
+
+int is_leap(int year);
+
+int main(void)
+{
+	int year;
+	
+	printf("연도를 입력하시오: ");
+	scanf("%d", &year);
+
+	printf("%d년은 %d일입니다. \n", year, is_leap(year));
+}
+
+int is_leap(int year)
+{
+	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+	{
+		return 366;
+	}
+	else
+		return 365;
+}
+
+15번
+#include <stdio.h>
+
+double round(double n);
+
+int main(void)
+{
+	double n;
+
+	printf("실수를 입력하시오: ");
+	scanf("%lf", &n);
+	
+	printf("반올림한 값은 %f입니다. ", round(n));
+
+	return 0;
+}
+
+double round(double n)
+{
+	int sum;
+	
+	return (sum = n + 0.5);
+}
+
+16번
+#include <stdio.h>
+#include <math.h>
+#define e 0.000001
+
+double f_abs(double x);
+double f_min(double a, double b);
+double f_equal(double a, double b);
+
+int main(void)
+{
+	double a, b;
+
+	printf("실수를 입력하시오: ");
+	scanf("%lf", &a);
+
+	printf("실수를 입력하시오: ");
+	scanf("%lf", &b);
+
+	if (f_equal(a,b) == 1)
+		printf("두 개의 실수는 서로 같음\n");
+	else if ( f_equal(a,b) == 0)
+		printf("두 개의 실수는 서로 다름\n");
+
+	return 0;
+
+}
+
+double f_abs(double x)
+{
+	return (abs(x));
+}
+
+double f_min(double a, double b)
+{
+	if (a > b)
+		return b;
+	else
+		return a;
+}
+
+double f_equal(double a, double b)
+{
+	if (f_abs(a - b) / f_min(f_abs(a), f_abs(b)) < e)
+		return 1;
+	else
+		return 0;
+}
+
+17번
+#include <stdio.h>
+
+void printf_menu(void);
+void check_menu_number(int n);
+void select_menu(int n);
+
+int main(void)
+{
+	int n;
+
+	while (1)
+	{
+		printf_menu();
+		printf("원하는 메뉴를 선택하시오: ");
+		scanf("%d", &n);
+
+		check_menu_number(n);
+
+		if (n == 4)
+			break;
+	}
+
+	return 0;
+}
+
+void printf_menu(void)
+{
+	int n;
+
+	printf("1. 햄버거\n");
+	printf("2. 치즈버거\n");
+	printf("3. 샌드위치\n");
+	printf("4. 종료\n");
+
+	return 0;
+}
+
+void check_menu_number(int n)
+{
+	if (n >= 1 && n <= 4)
+		select_menu(n);
+	else
+		printf_menu();
+}
+
+void select_menu(int n)
+{
+	printf("%d번이 선택되었습니다. \n", n);
+}
+

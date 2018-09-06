@@ -1,0 +1,548 @@
+1부터 100까지 난수를 10개 받아서 최소값을 구하는 프로그램
+
+int main(void)
+{
+	int n[10];
+	int minimum;
+	int temp;
+	
+	srand((unsigned)time(NULL));
+	
+	for (int i = 0; i < 10; i++)
+	{
+		n[i] = rand() % 100 + 1;
+	}
+
+	for (int k = 0; k < 10; k++)
+	{
+		printf("%d ", n[k]);
+	}
+
+	printf("\n");
+
+	minimum = n[0];
+
+	for (int j = 1; j < 10; j++)
+	{
+		if (minimum > n[j])
+		    minimum = n[j];
+
+	}
+
+	printf("최소값은 %d입니다.\n", minimum);
+
+	return 0;	
+}
+
+1번
+#include <stdio.h>
+
+int main(void)
+{
+	int days[12] = { 31,29,31,30,31,30,31,31,30,31,30,31 };
+	
+	for (int i = 0; i < 12; i++)
+	{
+		printf("%d월은 %d일까지 있습니다.\n", i + 1, days[i]);
+	}
+
+	return 0;
+}
+
+2번
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void insert_num(int* n);
+void insert_max(int* n);
+void insert_min(int* n);
+
+int main(void)
+{
+	int n[10] = { 0 };
+
+	srand((unsigned)time(NULL));
+
+	insert_num(n);
+	insert_max(n);
+	insert_min(n);
+
+	return 0;
+}
+
+void insert_num(int* n)
+{
+	for (int i = 0; i < 10; i++)
+		n[i] = rand() % 100;
+
+	return 0;
+}
+
+void insert_max(int* n)
+{
+	int max = 0;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (n[i] > max)
+			max = n[i];
+	}
+
+	printf("최대값은 %d입니다.\n", max);
+
+	return 0;
+}
+
+void insert_min(int* n)
+{
+	int min = 100;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (n[i] < min)
+			min = n[i];
+	}
+	
+	printf("최소값은 %d입니다.\n", min);
+
+	return 0;
+}
+
+3번,4번
+#include <stdio.h>
+#define SIZE 3
+
+void array_copy(int* a, int* b,int size);
+int array_check(int* a, int* b,int size);
+
+int main(void)
+{
+	int a[SIZE] = { 9,8,7 };
+	int b[SIZE] = { 4,5,6 };
+
+	array_copy(a, b, 3);
+	for (int i = 0; i < 3; i++)
+		printf("%d ", b[i]);
+
+	printf("\n");
+
+	if (array_check(a,b,3) == 1)
+		printf("같다\n");
+
+	if (array_check(a,b,3) == 0)
+		printf("다르다\n");
+
+
+	return 0;
+}
+
+void array_copy(int* a, int* b, int size)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		b[i] = a[i];
+	}
+
+	return 0;
+}
+
+ int array_check(int* a, int* b, int size)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		if (a[i] == b[i])
+			return 1;
+		else
+			return 0;
+	}
+}
+
+
+5번
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(void)
+{
+	int max;
+	int n[10] = { 0 };
+	
+	srand((unsigned)time(NULL));
+
+	for (int i = 0; i < 100; i++)
+	{
+		++n[rand() % 10];
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d의 빈도수: %d\n", i + 1, n[i]);
+	}
+
+	max = n[0];
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (n[i] > max)
+			max = n[i];
+	}
+
+	printf("가장 많이 생선된 수는 %d입니다.\n", max);
+
+	return 0;	
+}
+
+6번
+#include <stdio.h>
+
+int main(void)
+{
+	int n[3][5] = { {12,56,32,16,98},{99,56,34,41,3},{65,3,87,78,21} };
+	int sum = 0;
+
+	for (int i = 0; i < 3; i++)
+	{
+		sum = 0;
+
+		for (int j = 0; j < 5; j++)
+		{
+		sum += n[i][j];
+		}
+
+		printf("%d행의 합 %d\n", i + 1, sum);
+
+	}
+
+
+	for (int j = 0; j < 5; j++)
+	{
+		sum = 0;
+
+		for (int i = 0; i < 3; i++)
+		{
+			sum += n[i][j];
+		}
+
+		printf("%d열의 합 %d\n", j + 1, sum);
+	}
+
+
+
+
+	return 0;
+}
+
+7번
+#include <stdio.h>
+
+int main(void)
+{
+	int n[10][3] = { 0 };
+	int t;
+
+	for (int i = 0; i < 10; i++)
+	{
+		n[i][0] = i + 1;
+		n[i][1] = (i + 1)*(i + 1);
+		n[i][2] = (i + 1)*(i + 1)*(i + 1);
+	}
+
+	printf("정수를 입력하시오: ");
+	scanf("%d", &t);
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (n[i][2] == t)
+			printf("%d의 세제곱근은 %d입니다.\n", n[i][2], n[i][0]);
+	}
+
+	return 0;
+}
+
+8번
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+	int n[10] = { 0 };
+	int t;
+	double sum = 0.0;
+	double m;
+	double v;
+
+	for (int i = 0; i < 10; i++)
+	{
+		printf("데이터를 입력하시오: ");
+		scanf("%d", &t);
+
+		n[i] = t;
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		sum += n[i];
+	}
+
+	m = sum / 10;
+	printf("평균값은 %f입니다.\n", m);
+	sum = 0;
+
+	for (int i = 0; i < 10; i++)
+	{
+		sum += (n[i] - m) * (n[i] - m);
+	}
+	
+	v = sum / 10;
+	
+	printf("표준편차값은 %f입니다.\n", sqrt(v));
+	
+	return 0;
+}
+
+9번
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(void)
+{
+	int n[10][4];
+	int max = 0;
+	int min = 100;
+
+	srand((unsigned)time(NULL));
+
+	for (int i = 0; i < 10; i++)
+	{
+		n[i][0] = i + 1;
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 1; j < 4; j++)
+			n[i][j] = rand() % 101;
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (n[i][1] > max)
+			max = n[i][1];
+
+		if (n[i][1] < min)
+			min = n[i][1];
+	}
+	printf("첫 번째 시험에서의 최대점수: %d, 최저점수: %d\n", max, min);
+
+	max = 0;
+	min = 100;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (n[i][2] > max)
+			max = n[i][2];
+
+		if (n[i][2] < min)
+			min = n[i][2];
+	}
+	printf("두 번째 시험에서의 최대점수: %d, 최저점수: %d\n", max, min);
+
+	max = 0;
+	min = 100;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (n[i][3] > max)
+			max = n[i][3];
+
+		if (n[i][3] < min)
+			min = n[i][3];
+	}
+	printf("세 번째 시험에서의 최대점수: %d, 최저점수: %d\n", max, min);
+
+	return 0;
+}
+
+
+10번
+#include <stdio.h>
+
+void vector_add(int* a, int* b,int* c);
+int dot_product(int* a, int* b);
+
+int main(void)
+{
+	int a[3] = { 1,2,3 };
+	int b[3] = { 4,5,6 };
+	int c[3] = { 0 };
+	
+	vector_add(a, b, c);
+
+	for (int i = 0; i < 3; i++)
+	{
+		printf("%d ", c[i]);
+	}
+	printf("\n");
+
+	printf("내적의 합: %d\n", dot_product(a, b));	
+
+	return 0;
+}
+
+void vector_add(int* a, int* b, int* c)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		c[i] = a[i] + b[i];
+	}
+}
+
+int dot_product(int* a, int* b)
+{
+	int sum = 0;
+
+	for (int i = 0; i < 3; i++)
+	{
+		sum += (a[i] * b[i]);
+	}
+
+	return sum;
+}
+
+
+11번
+#include <stdio.h>
+
+int main(void)
+{
+	int location[10] = { 1,2,3,4,5,1,2,3,4,5 };
+	int n;
+
+	printf("번호입력");
+	scanf("%d", &n);
+
+	printf("상품의 위치는 %d입니다.\n", location[n - 1]);
+
+	return 0;
+}
+
+12번
+#include <stdio.h>
+
+void scalar_mult(int a[][3]);
+void transpose(int a[][3], int b[][3]);
+
+int main(void)
+{
+	int scalar;
+
+	int a[3][3] = { {1,2,3},{4,5,6},{7,8,9} };
+	int b[3][3] = { 0 };
+
+	scalar_mult(a, 3);
+
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			printf("%d ", a[i][j]);
+		}
+		printf("\n");
+	}
+
+	transpose(a,b);
+
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			printf("%d ", b[i][j]/2);
+		}
+		printf("\n");
+	}
+
+	return 0;
+}
+
+void scalar_mult(int a[][3])
+{
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			a[i][j] *= 2;
+		}
+	}
+
+	return 0;
+}
+
+void transpose(int a[][3],int b[][3])
+{
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			b[i][j] = a[j][i];
+		}
+	}
+	return 0;
+}
+
+13번
+
+#include <stdio.h>
+
+int main(void)
+{
+	int n;
+	int binary[32] = { 0 };
+
+	printf("10진수를 입력하시오: ");
+	scanf("%d", &n);
+
+	for (int i = 0; i < 32 && n > 0; i++)
+	{
+		binary[i] = n % 2;
+		n = n / 2;
+	}
+
+	for (int i = 31; i >= 0; i--)
+	{
+		printf("%d", binary[i]);
+	}
+
+	return 0;
+}
+
+15번
+#include <stdio.h>
+
+int main()
+ {
+	int sieve[101] = { 0 };
+	int i, j;
+
+	for (i = 2; i <= 100; i++) 
+	{
+		if (sieve[i] == 1)
+			continue;
+
+		for (j = i + 1; j <= 100; j++) 
+		{
+			if (j % i == 0)
+				sieve[j] = 1;
+		}
+	}
+	for (i = 2; i <= 100; i++)
+	{
+		if (sieve[i] == 0)
+			printf("%d ", i);
+	}
+	return 0;
+}
+
+
+	

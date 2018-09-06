@@ -1,0 +1,208 @@
+1번
+#include <stdio.h>
+
+int main(void)
+{
+	int x, y;
+	
+	printf("2개의 정수를 입력하시오: ");
+	scanf("%d %d", &x, &y);
+
+	printf("몫:%d   나머지:%d\n", x / y, x % y);
+
+	return 0;
+}
+
+2번
+#include <stdio.h>
+
+int main(void)
+{
+	double x, y;
+
+	printf("2개의 실수를 입력하시오: ");
+	scanf("%lf %lf", &x, &y);
+	
+	printf("%lf  %lf  %lf  %lf", x + y, x - y, x * y, x / y);
+
+	return 0;
+}
+
+3번
+#include <stdio.h>
+
+int main(void)
+{
+	int a, b, c;
+
+	printf("3개의 정수를 입력하시오: ");
+	scanf("%d %d %d", &a, &b, &c);
+
+	if (a > b && a > c)
+	{
+		printf("최대값: %d\n", a);
+	}
+
+	if (b > a && b > c)
+	{
+		printf("최대값: %d\n", b);
+	}
+
+	if (c > b && c > a)
+	{
+		printf("최대값: %d\n", c);
+	}
+
+	return 0;
+}
+
+4번
+#include <stdio.h>
+#define inch_ 2.54
+
+int main(void)
+{
+	int n;
+	int ft;
+	double inch;
+
+	printf("키를 입력하시오: ");
+	scanf("%d", &n);
+
+	inch = n / inch_;
+	ft = inch / 12;
+	inch = inch - ft * 12;
+
+	printf("%dcm는 %d피트 %f인치입니다.\n ", n, ft, inch);
+
+	return 0;
+}
+
+5번
+#include <stdio.h>
+
+int main(void)
+{
+	int n;
+	int a, b;
+
+
+	printf("100보다 작은 정수를 입력하시오: ");
+	scanf("%d", &n);
+
+	a = (n / 10) % 10;
+	b = n % 10;
+
+	printf("십의자리: %d\n", a);
+	printf("일의자리: %d\n", b);
+
+	return 0;
+}
+
+6번
+#include <stdio.h>
+
+int main(void)
+{
+	int a, b;
+	
+	printf("정수를 입력하시오: ");
+	scanf("%d", &a);
+
+	b = ~a + 1;
+	
+	printf("2의 보수: %d", b);
+
+	return 0;
+}
+
+7번
+#include <stdio.h>
+
+int main(void)
+{
+	int a, b;
+
+	printf("정수를 입력하시오: ");
+	scanf("%d", &a);
+
+	printf("2를 곱하고 싶은 횟수: ");
+	scanf("%d", &b);
+
+	printf("%d<<%d의 값: %d", a, b, a << b);
+
+	return 0;
+}
+
+8번
+#include <stdio.h>
+#define pi 3.141592
+int main(void)
+{
+	double A, V;
+	double r;
+
+	printf("반지름을 입력하시오: ");
+	scanf("%lf", &r);
+
+	A = 4 * pi * r * r;
+	V = 4 / 3 * pi * r * r * r;
+
+	printf("겉넓이: %f\n", A);
+	printf("부피: %f\n", V);
+
+	return 0;
+}
+
+9번
+#include <stdio.h>
+
+int main(void)
+{
+	double AC, AE, BC, DE;
+	
+	printf("AC = ");
+	scanf("%lf", &AC);
+
+	printf("AE = ");
+	scanf("%lf", &AE);
+
+	printf("BC = ");
+	scanf("%lf", &BC);
+	
+	DE = AE * BC / AC;
+
+	printf("DE = %f\n", DE);
+
+	return 0;
+}
+
+10번
+#include <stdio.h>
+
+int main(void)
+{
+	int x, y;
+	
+	printf("좌표를 입력하시오: (x, y)");
+	scanf("%d %d", &x, &y);
+
+	if (x > 0 && y > 0)
+	{
+		printf("1사분면\n");
+	}
+	if (x < 0 && y > 0)
+	{
+		printf("2사분면\n");
+	}
+	if (x < 0 && y < 0)
+	{
+		printf("3사분면\n");
+	}
+	if (x > 0 && y < 0)
+	{
+		printf("4사분면\n");
+	}
+	
+	return 0;
+}

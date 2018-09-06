@@ -1,0 +1,566 @@
+1번
+#include <stdio.h>
+
+int main(void) 
+{
+	char str;
+
+	printf("문자를 입력하시오: ");
+	scanf("%c", &str);
+
+	printf("아스키 코드값 = %d\n", str);
+
+	return 0;
+}
+
+
+2번
+#include <stdio.h>
+void space_delete(char *str);
+
+int main(void)
+{
+	char str[100];
+
+	printf("공백 문자가 있는 문자열을 입력하시오: ");
+	gets(str);
+	space_delete(str);
+
+	return 0;
+}
+void space_delete(char *str)
+{
+	int i;
+	for (i = 0; str[i] != NULL; i++)
+	{
+		if (str[i] == ' ')
+			continue;
+		printf("%c", str[i]);
+	}
+	printf("\n");
+}
+
+3번
+#include <stdio.h>
+
+int str_chr(char *s, int c);
+
+int main(void)
+{
+	char str[100];
+	char ctr;
+
+	printf("문자열을 입력하시오: ");
+	gets_s(str);
+	
+	printf("개수를 셀 문자를 입력하시오: ");
+	scanf("%c", &ctr);
+
+	printf("a의 개수: %d\n", str_chr(str, ctr));
+
+	return 0;
+}
+
+int str_chr(char *s, int c)
+{
+	int i;
+	int count = 0;
+
+	for (i = 0; s[i] != NULL; i++)
+	{
+		if (s[i] == c)
+			count++;
+	}
+	return count;
+}
+4번
+#include <stdio.h>
+
+int str_chr(char *s, int c);
+
+int main(void)
+{
+	char str[100];
+	int i;
+
+	printf("문자열을 입력하시오: ");
+	gets(str);
+
+	for (i = 'a'; i <= 'z'; i++)
+	{
+		printf("%c : %d\n", i, str_chr(str, i));
+	}
+	
+	return 0;
+}
+
+int str_chr(char *s, int c)
+{
+	int i;
+	int count = 0;
+
+	for (i = 0; s[i] != NULL; i++)
+	{
+		if (s[i] == c)
+			count++;
+	}
+	return count;
+}
+
+5번
+#include <stdio.h>
+
+void convert(char op);
+
+int main(void)
+{
+	char op;
+	while (1)
+	{
+		printf("문자를 입력하시오: ");
+		op = getchar();
+
+		if (op == '.')
+			break;
+
+		convert(op);
+		printf("\n");
+	}
+	return 0;
+}
+
+void convert(char op)
+{
+	if (op >= 'a' && op <= 'z')
+	{
+		op -= 'a' - 'A';
+		putchar(op);
+	}
+	else if (op >= 'A' && op <= 'Z')
+	{
+		op += 'a' - 'A';
+		putchar(op);
+	}
+}
+
+
+6번
+#include <stdio.h>
+
+void str_upper(char *s);
+
+int main(void)
+{
+	char str[20];
+	
+	printf("문자열을 입력하시오: ");
+	gets_s(str);
+	
+	str_upper(str);
+
+	printf("변환된 문자열: ");
+	puts(str);
+
+	return 0;	
+}
+
+void str_upper(char* s) 
+{
+	int i;
+	for (i = 0; s[i] != NULL; i++) {
+		if (s[i] >= 'a' && s[i] <= 'z')
+			s[i] -= 'a' - 'A';
+		else if (s[i] >= 'A' && s[i] <= 'Z')
+			s[i] += 'a' - 'A';
+	}
+}
+
+7번
+#include <stdio.h>
+#include <string.h>
+
+int get_response(char *prompt);
+
+int main(void)
+{
+	char str[100];
+	
+	printf("게임을 하시겠습니까? ");
+	gets(str);
+	
+	if (get_response(str) == 1)
+		printf("긍정적인 답변\n");
+	else
+		printf("부정적인 답변\n");
+
+	return 0;
+}
+
+int get_response(char *prompt)
+{
+	if (strcmp(prompt, "yes") == 0 || strcmp(prompt, "ok") == 0)
+		return 1;
+	else
+		return 0;	
+}
+
+
+8번
+#include <stdio.h>
+
+int get_word(char *s);
+
+int main(void)
+{
+	char str[100];
+	
+	printf("문자열을 입력하시오: ");
+	gets(str);
+
+	printf("단어의 수는 %d입니다.\n", get_word(str));
+
+	return 0;
+}
+int get_word(char *s)
+{
+	char *token[100];
+	int i = 1;
+
+	token[0] = strtok(s, " ");
+	while (token[i] = strtok(NULL, " "))
+	{
+		i++;
+	}
+
+	return i;
+}
+
+
+
+9번
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char str[100];
+	int i;
+
+	printf("텍스트를 입력하시오: ");
+	gets(str);
+
+	if (str[0] >= 'a' && str[0] <= 'z')
+		str[0] -= 'a' - 'A';
+	
+	if (str[strlen(str) - 1] != '.')
+	{
+		str[strlen(str) + 1] = NULL;//NULL을 먼저 넣어줘야된다! 중요!
+		str[strlen(str)] = '.';
+	}
+
+	printf("결과 텍스트 출력: ");
+	
+	for (i = 0; str[i] != NULL; i++)
+	{
+		printf("%c", str[i]);
+	}
+	printf("\n");
+
+	return 0;
+}
+
+10번
+#include <stdio.h>
+#include <string.h>
+
+void tolower(char *s);
+void check_palindrome(char *s);
+
+int main(void)
+{
+	char str[100];
+	
+	printf("문자열을 입력하시오: ");
+	gets_s(str);
+	
+	tolower(str);
+	printf("\n");
+
+	check_palindrome(str);
+
+	return 0;
+	
+}
+
+void tolower(char *s)	
+{
+	int i;
+
+	for (i = 0; s[i] != NULL; i++)
+	{
+		if (s[i] >= 'a' && s[i] <= 'z')
+			s[i] -= 'a' - 'A';
+	}
+	printf(s);
+}
+
+void check_palindrome(char *s)
+{
+	int i;
+	int length;
+	int count = 0;
+	
+	length = strlen(s);
+
+	for (i = 0; i < length ; i++)
+	{
+		if (s[i] == s[length - 1 - i])
+			count++;
+	}
+	
+	if (count == length)
+		printf("회문입니다.\n");
+	else
+		printf("회문이 아닙니다.\n");	
+}
+
+
+11번
+#include <stdio.h>
+#include <string.h>
+
+void get_word(char *str);
+
+int main(void)
+{
+	char str[100];
+
+	printf("문자열을 입력하시오: ");
+	gets_s(str);
+
+	get_word(str);
+
+	return 0;
+}
+
+void get_word(char *str)
+{
+	char *token[100];
+	int i = 1;
+	int j;
+
+	token[0] = strtok(str, " ");
+	
+	while (token[i] = strtok(NULL, " "))
+	{
+		i++;
+	}
+	for (j = i - 1; j >= 0; j--)
+	{
+		printf("%s ", token[j]);
+	}
+}
+
+12번
+#include <stdio.h>
+#include <string.h>
+
+void tolower(char *s);
+void changed_name(char *s);
+
+int main(void)
+{
+	char str[100];
+
+	printf("영어 이름을 입력하시오: ");
+	gets(str);
+
+	tolower(str);
+	changed_name(str);
+	
+	return 0;
+}
+
+void tolower(char *s)
+{
+	int i;
+	for (i = 0; s[i] != NULL; i++)
+	{
+		if (s[i] >= 'A' && s[i] <= 'Z')
+			s[i] += 'a' - 'A';
+	}
+}
+
+void changed_name(char *s)
+{
+	char *token[3];
+	int i = 1;
+	
+	token[0] = strtok(s, " ");
+	while (token[i] = strtok(NULL, " "))
+	{
+		i++;
+	}
+	
+	printf("변환된 이름:");
+	printf("%s ", token[1]);
+	printf("%s, ", token[2]);
+	printf("%s", token[0]);
+}
+
+
+
+13번
+#include <stdio.h>
+#include <string.h>
+
+int get_point(char *s);
+
+int main(void)
+{
+	char str[100];
+	
+	printf("텍스트를 입력하시오: ");
+	gets(str);
+	
+	printf("구두점의 개수는 %d입니다.\n", get_point(str));
+
+	return 0;
+}
+
+int get_point(char *s)
+{
+	int i;
+	int count = 0;
+		
+	for (i = 0; s[i] != NULL; i++)
+	{
+		if (s[i] == '.' || s[i] == ',')
+			count++;
+	}
+
+	return count;
+}
+
+14번
+#include <stdio.h>
+#include <string.h>
+
+void get_word(char *s, char *s1, char *s2);
+
+int main(void)
+{
+	char str[100];
+	char str_1[20];
+	char str_2[20];
+
+	printf("문자열을 입력하시오: ");
+	gets(str);
+
+	printf("찾을 문자열: ");
+	gets(str_1);
+
+	printf("바꿀 문자열: ");
+	gets(str_2);
+
+	get_word(str,str_1,str_2);
+
+	return 0;
+}
+
+void get_word(char *s, char *s1, char *s2)
+{
+	char *token[100];
+	int i = 1;
+	
+	token[0] = strtok(s, " ");
+
+	while (token[i] = strtok(NULL, " "))
+	{
+		i++;
+	}
+
+	for (i = 0; token[i] != NULL; i++)
+	{
+		if (strcmp(token[i], s1) == 0)
+			token[i] = s2;
+	}
+
+	printf("결과: ");
+	for (i = 0; token[i] != NULL; i++)
+	{
+		printf("%s ", token[i]);
+	}
+	printf("\n");
+}
+
+
+15번
+#include <stdio.h>
+#include <string.h>
+
+void calculate(char *s);
+
+int main(void)
+{
+	char str[100];
+
+	printf("연산을 입력하시오: ");
+	gets(str);
+
+	calculate(str);
+
+	return 0;
+	
+}
+void calculate(char *s)
+{
+	char *token[1];
+	int x, y;
+
+	printf("두 수를 입력하시오:");
+	scanf("%d %d", &x, &y);
+
+	token[0] = strtok(s, " ");
+
+	if (strcmp(token[0], "add") == 0)
+		printf("연산의 결과: %d\n", x+y);
+
+	if (strcmp(token[0], "sub") == 0)
+		printf("연산의 결과: %d\n", x-y);
+
+	if (strcmp(token[0], "mul") == 0)
+		printf("연산의 결과: %d\n", x*y);
+
+	if (strcmp(token[0], "div") == 0)
+		printf("연산의 결과: %d\n", x/y);
+}
+
+
+16번
+#include <stdio.h>
+#include <string.h>
+#include <windows.h>
+
+int main(void)
+{
+	int i;
+	int k = 0;
+
+	char str[100];
+
+	printf("광고하고 싶은 텍스트를 입력하시오: ");
+	gets(str);
+
+	while (1)
+	{
+		system("cls");
+		for (i = 0; str[i] != NULL ; i++)
+			printf("%c", str[(i + k) % strlen(str)]);
+		k++;
+		Sleep(500);
+	}
+	return 0;
+}
+
+

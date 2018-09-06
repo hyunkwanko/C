@@ -1,0 +1,495 @@
+p454
+
+#include <stdio.h>
+int get_line_parameter(int x1, int y1, int x2, int y2, float *slope, float *yintercept);
+
+int main(void)
+{
+	float s, y;
+
+	if (get_line_parameter(3, 3, 6, 6, &s, &y) == -1)
+		printf("에러\n");
+	else
+		printf("기울기는 %f, y절편은 %f\n", s, y);
+
+	return 0;
+}
+int get_line_parameter(int x1, int y1, int x2, int y2, float *slope, float *yintercept)
+{
+	if (x1 == x2)
+		return -1;
+	else
+	{
+		*slope = (float)(y2 - y1) / (float)(x2 - x1);
+		*yintercept = y1 - (*slope)*x1;
+		return 0;
+	}
+}
+
+p456
+
+#include <stdio.h>
+
+void sub(int[], int n);
+
+int main(void)
+{
+	int a[3] = { 1,2,3 };
+
+	printf("%d %d %d\n", a[0], a[1], a[2]);
+	sub(a, 3);
+	printf("%d %d %d\n", a[0], a[1], a[2]);
+
+	return 0;
+}
+
+void sub(int b[], int n)
+{
+	b[0] = 4;
+	b[1] = 5;
+	b[2] = 6;
+}
+
+1번
+#include <stdio.h>
+
+int main(void) 
+{
+	int x = 0x12345678;
+	char *xp = (char*)&x;
+
+	printf("빅 엔디언(Big-endian) \n");
+	printf("바이트순서: %x %x %x %x \n", xp[3], xp[2], xp[1], xp[0]);
+	printf("\n");
+	printf("리틀 엔디언(Little-endian) \n");
+	printf("바이트순서: %x %x %x %x \n", xp[0], xp[1], xp[2], xp[3]);
+
+	return 0;
+}
+
+2번
+#include <stdio.h>
+void get_sum_diff(int x, int y, int *p_sum, int *p_diff);
+
+int main(void)
+{
+	int x, y;
+	int p_sum, p_diff;
+	
+	printf("두 정수를 입력하시오: ");
+	scanf("%d %d", &x, &y);
+	
+	get_sum_diff(x, y, &p_sum, &p_diff);
+
+	return 0;
+
+}
+
+void get_sum_diff(int x, int y, int *p_sum, int *p_diff)
+{
+	*p_sum = x + y;
+
+	if(x > y)
+		*p_diff = x - y;
+	else
+		*p_diff = y - x;
+	
+	printf("합은 %d입니다.\n", *p_sum);
+	printf("차는 %d입니다.\n", *p_diff);
+}
+
+3번
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define SIZE 10
+
+void array_fill(int *A, int size);
+
+int main(void)
+{	
+	int data[SIZE];
+	array_fill(data, SIZE);
+
+	return 0;
+}
+
+void array_fill(int *A, int size)
+{
+	int i;
+
+	srand((unsigned)time(NULL));
+
+	for (i = 0; i < size; i++)
+	{
+		A[i] = 1 + rand() % 100;
+		printf("%d ", A[i]);
+	}	
+}
+
+4번
+#include <stdio.h>
+
+void array_print(int *A, int size);
+
+int main(void)
+{
+	int data[5] = { 1,2,3,4,5 };
+	
+	array_print(data, 5);
+	
+	return 0;
+}
+
+void array_print(int *A, int size)
+{
+	int i;
+	
+	printf("A[] = {");
+	for (i = 0; i < size; i++)
+	{
+		printf("%d, ", A[i]);
+	}
+	printf("\b\b}\n");
+}
+
+5번
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define SIZE 10
+
+void convert(double *grades, double *scores, int size);
+
+int main(void)
+{
+	double grades[10] = { 0.0 };
+	double scores[10];
+	int i;
+	double n;
+
+	srand((unsigned)time(NULL));
+
+	printf("학생들의 평점을 입력하시오: ");
+	
+	for (i = 0; i < SIZE; i++)
+	{
+		grades[i] = (rand() % 44) / 10.0;
+		printf("%0.1f점 ", grades[i]);
+	}
+	printf("\n");
+
+	convert(grades, scores, 10);
+
+	printf("변환한 점수를 입력하시오: ");
+	
+	for (i = 0; i < SIZE; i++)
+	{
+		printf("%0.0f점 ", scores[i]);
+	}
+	printf("\n");
+
+	return 0;
+}
+
+void convert(double *grades, double *scores, int size)
+{
+	int i;
+	
+	for (i = 0; i < SIZE; i++)
+	{
+		scores[i] = grades[i] * 100 / 4.3;
+	}
+}
+
+6번
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define SIZE 10
+
+void array_copy(int *A, int *B, int size)
+{
+	int i;
+	for (i = 0; i < size; i++)
+	{
+		B[i] = A[i];
+	}
+}
+
+int main(void)
+{
+	int data_1[SIZE] = { 0 };
+	int data_2[SIZE] = { 0 };
+	int i;
+	
+	srand((unsigned)time(NULL));
+	
+	for (i = 0;i < SIZE; i++)
+	{
+		data_1[i] = 1 + rand() % 100;
+		printf("%d ", data_1[i]);
+	}
+	printf("\n");
+
+	array_copy(data_1, data_2, SIZE);
+
+	for (i = 0; i < SIZE; i++)
+	{
+		printf("%d ", data_2[i]);
+	}
+	printf("\n");
+	
+	return 0;
+}
+
+7번
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define SIZE 10
+
+void array_add(int *A, int *B, int *C, int size);
+void array_salary(int *A,int size);
+void array_bonus(int *B,int size);
+
+int main(void)
+{
+	int A[SIZE] = { 0 };
+	int B[SIZE] = { 0 };
+	int C[SIZE] = { 0 };
+
+	printf("기본급: ");
+	array_salary(A, SIZE);
+	printf("\n");
+
+	printf("보너스: ");
+	array_bonus(B, SIZE);
+	printf("\n");
+
+	
+	printf("월급의 총액: ");
+	array_add(A, B, C, SIZE);
+	printf("\n");
+
+	return 0;	
+}
+
+void array_add(int *A, int *B, int *C, int size)
+{
+	int i;
+	for (i = 0; i < size; i++)
+	{
+		C[i] = A[i] + B[i];
+	}
+
+	for (i = 0; i < size; i++)
+	{
+		printf("%d ", C[i]);
+	}
+}
+
+void array_salary(int *A,int size)
+{
+	int i;
+
+	srand((unsigned)time(NULL));
+
+	for (i = 0; i < size; i++)
+	{
+		A[i] = rand() % 1000000;
+	}
+
+	for (i = 0; i < size; i++)
+	{
+		printf("%d ", A[i]);
+	}
+
+}
+
+void array_bonus(int *B, int size)
+{
+	int i;
+
+	srand((unsigned)time(NULL));
+
+	for (i = 0; i < size; i++)
+	{
+		B[i] = rand() % 100000;
+	}
+
+	for (i = 0; i < size; i++)
+	{
+		printf("%d ", B[i]);
+	}
+
+}
+
+8번
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define SIZE 10
+
+int array_sum(int *A, int size)
+{
+	int i, sum = 0;
+	for (i = 0; i < size; i++)
+	{
+		sum += A[i];
+	}
+	
+	return sum;
+}
+
+int main(void)
+{
+	int A[SIZE] = { 0 };
+	int i;
+	
+	srand((unsigned)time(NULL));
+
+	printf("직원들의 봉급: \n");
+	for (i = 0; i < SIZE; i++)
+	{
+		A[i] = rand() % 1000000;
+		printf("%d\n", A[i]);
+	}
+
+	printf("지급할 월급의 총액: %d\n", array_sum(A, SIZE));
+
+	return 0;
+}
+
+9번
+
+#include <stdio.h>
+#define SIZE 10
+
+int search(int *A, int size, int search_value);
+
+int main(void)
+{
+	int A[SIZE] = { 1,2,3,4,5,200,8,9,100,3};
+
+	printf("인덱스는 %d입니다.\n", search(A, SIZE, 200));
+
+	return 0;
+}
+
+
+int search(int *A, int size, int search_value)
+{
+	int i;
+
+	for (i = 0; i < size; i++)
+	{
+		if (A[i] == search_value)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+10번
+#include <stdio.h>
+
+void get_lcm_gcd(int x, int y, int *p_lcm, int *p_gcd);
+void get_gcd(int x, int y, int *p_gcd);
+
+int main(void)
+{
+	int x;
+	int y;
+	int p_lcm;
+	int p_gcd;
+	
+	printf("두 수를 입력하시오: ");
+	scanf("%d %d", &x, &y);
+	
+	get_gcd(x, y, &p_gcd);
+	get_lcm_gcd(x, y, &p_lcm, &p_gcd);
+
+	printf("최소 공배수: %d\n", p_lcm);
+	printf("최대 공약수: %d\n", p_gcd);
+
+	return 0;
+}
+
+void get_gcd(int x, int y, int *p_gcd)
+{
+	int temp;
+	
+	while (y > 0)
+	{
+		temp = x % y;
+		x = y;
+		y = temp;
+	}
+
+	*p_gcd = x;
+}
+
+void get_lcm_gcd(int x, int y, int *p_lcm, int *p_gcd)
+{
+	*p_lcm = (x * y) / *p_gcd;
+}
+
+
+
+11번
+#include <stdio.h>
+#define SIZE 4
+
+void merge(int *A, int *B, int *C, int size);
+
+int main(void)
+{
+	int A[SIZE] = { 2,5,7,8 };
+	int B[SIZE] = { 1,3,4,6 };
+	int C[SIZE * 2];
+
+	merge(A, B, C, SIZE);
+
+	return 0;
+}
+
+void merge(int *A, int *B, int *C, int size)
+{
+	int i;
+	int j = 0;
+	int k;
+	int temp;
+
+	for (i = 0; i < size; i++)
+	{
+		C[i] = A[i];
+	}
+	for (i = size; i < size * 2; i++)
+	{
+		C[i] = B[j];
+		j++;
+	}
+
+	for (i = 0; i < size * 2; i++)
+	{
+		for (k = i + 1; k < size * 2; k++)
+		{
+			if (C[i] > C[k])
+			{
+				temp = C[i];
+				C[i] = C[k];
+				C[k] = temp;
+			}
+		}
+	}	
+
+	for (i = 0; i < size * 2; i++)
+	{
+		printf("%d ", C[i]);
+	}
+	printf("\n");
+}
+

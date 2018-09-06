@@ -1,0 +1,175 @@
+1번
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+	int *pNumber;
+	int count;
+	int sum = 0;
+	int i;
+	printf("정수의 개수: ");
+	scanf("%d", &count);
+
+	pNumber = (int *)malloc(count * sizeof(int));
+	
+	for (i = 0; i < count; i++)
+	{
+		printf("양의 정수를 입력하시오: ");
+		scanf("%d", &pNumber[i]);
+
+		sum += pNumber[i];
+	}
+	free(pNumber);
+
+	printf("합은 %d입니다.\n", sum);
+	return 0;
+}
+
+2번
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+	int i, n;
+	char **A;
+	
+	printf("문자열의 개수: ");
+	scanf("%d", &n);
+	
+	A = (char **)malloc(n * sizeof(char *));
+	
+	for (i = 0; i < n; i++)
+	{
+		A[i] = (char *)malloc(100);
+	}
+	printf("%d개의 문자열을 저장할 수 있는 공간이 할당되었습니다.\n", n);
+
+	for (i = 0; i < n; i++)
+	{
+		free(A[i]);
+	}
+	free(A);
+
+	return 0;
+}
+
+3번
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+	char name[20];
+	char phone[20];
+}ADDRESS;
+
+int main(void)
+{
+	ADDRESS *address;
+	int n;
+	int i;
+	printf("주소의 개수: ");
+	scanf("%d", &n);
+
+	address = (ADDRESS *)malloc(sizeof(ADDRESS) * n);
+
+	for (i = 0; i < n; i++)
+	{
+		printf("이름: ");
+		scanf("%s", &address[i].name);
+		printf("번호: ");
+		scanf("%s", &address[i].phone);
+	}
+	printf("=================================\n");
+	printf("이름 \t\t 휴대폰 번호\n");
+
+	for (i = 0; i < n; i++)
+	{
+		printf("%s \t\t %s\n", address[i].name, address[i].phone);
+	}
+	printf("=================================\n");
+	free(address);
+	return 0;
+}
+4번
+#include <stdio.h>
+#include <stdlib.h>
+
+char *get_word()
+{
+	char *s;
+
+	s = (char *)malloc(50);
+
+	printf("단어를 입력하시오(최대 50글자): ");
+	scanf("%s", s);
+
+	return s;
+}
+
+int main(void)
+{
+	char *p;
+	p = get_word();
+	printf("동적 메모리에 저장된 단어는 %s입니다.\n", p);
+	free(p);
+
+	return 0;
+}
+
+5번
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+	int num;
+	struct node* link;
+}NODE;
+
+int main()
+{
+	NODE* plist = NULL;
+	NODE* prev = NULL, *p = NULL;
+	NODE* next = NULL;
+	int num;
+
+	//연결 리스트에 정보를 입력
+	while (1)
+	{
+		printf("양의 정수를 입력하세요(종료: -1): ");
+		scanf("%d", &num);
+		if (num == -1)
+			break;
+		p = (NODE*)malloc(sizeof(NODE));
+		p->num = num;
+
+		if (plist == NULL) //리스트가 비어 있으면
+			plist = p;     //새로운 노드를 첫번째 노드로 만든다.
+		else               //리스트가 비어 있지 않으면
+			prev->link = p;//새로운 노드를 이전 노드의 끝에 붙인다.
+
+		p->link = NULL;    //새로운 노드의 링크 필드를 NULL로 설정.
+		prev = p;
+	}
+
+	//연결 리스트에 있는 정보를 출력
+	p = plist;
+	while (p != NULL)
+	{
+		printf("%d->", p->num);
+		p = p->link;
+	}
+	printf("NULL\n");	
+
+	//동적 할당을 반납	
+	p = plist;
+	while (p != NULL)
+	{
+		next = p->link;
+		free(p);
+		p = next;
+	}
+	return 0;
+}

@@ -1,0 +1,410 @@
+<예제 문제>
+
+2진수 함수 표현
+
+#include <stdio.h>
+
+int print_binary(int i);
+
+int main(void)
+{
+	int i;
+
+	printf("10진수를 입력하시오: ");
+	scanf("%d", &i);
+	
+	printf("2진수는 %d입니다.\n", print_binary(i));
+
+	return 0;
+}
+
+int print_binary(int i)
+{
+	int a;
+	int sum = 0;
+	int j = 1;
+
+	while(i > 0)
+	{
+		a = i % 2;
+		i = i / 2;
+		sum += a * j;
+		j *= 10;
+	}
+
+	return sum;
+}
+
+최대 공약수 구하기
+
+#include <stdio.h>
+
+int gcd(int x, int y);
+
+int main(void)
+{
+	int x, y;
+
+	printf("두 수를 입력하시오. ");
+	scanf("%d %d", &x, &y);
+	
+	printf("최대공약수는 %d입니다. ", gcd(x,y));
+
+	return 0;
+}
+
+int gcd(int x, int y)
+{
+	int temp;
+	
+	while(y > 0)
+	{
+		temp = x % y;
+		x = y;
+		y = temp;
+	}
+
+	return x;
+}
+
+연습문제
+1번
+#include <stdio.h>
+
+void count(int a, char op, int b);
+
+int main(void)
+{
+	int a,b;
+	char op;
+
+	while(1)
+	{
+		printf("연산을 입력하시오: ");
+		scanf("%d %c %d", &a,&op,&b);
+		
+		count(a,op,b);
+			
+	}
+	return 0;
+}
+
+void count(int a, char op, int b)
+{
+	static int count_1=0;
+	static int count_2=0;
+	static int count_3=0;
+	static int count_4=0;
+
+	if(op == '+')
+	{
+		count_1++;
+		
+		printf("덧셈은 총 %d번 일어났습니다.\n", count_1);
+	}
+
+	if(op == '-')
+	{
+		count_2++;
+		
+		printf("뺄셈은 총 %d번 일어났습니다.\n", count_2);
+	}
+
+	if(op == '*')
+	{
+		count_3++;
+		
+		printf("곱셈은 총 %d번 일어났습니다.\n", count_3);
+	}
+
+	if(op == '/')
+	{
+		count_4++;
+		
+		printf("나눗셈은 총 %d번 일어났습니다.\n", count_4);
+	}
+
+
+	return 0;
+}
+
+2번
+#include <stdlib.h>
+#include <time.h>
+
+void get_dice_face(void);
+
+int main(void)
+{
+	int n;
+
+	srand((unsigned)time(NULL));
+
+	while (1)
+	{
+		get_dice_face();
+
+		printf("더 출력하시겠습니까? (Y : 1, N : 2)");
+		scanf("%d", &n);
+
+		if (n == 2)
+			break;
+	}
+}
+
+void get_dice_face(void)
+{
+	static count_1 = 0;
+	static count_2 = 0;
+	static count_3 = 0;
+	static count_4 = 0;
+	static count_5 = 0;
+	static count_6 = 0;
+
+	for (int i = 1; i <= 100; i++)
+	{
+		if (rand() % 6 + 1 == 1)
+			count_1++;
+
+		if (rand() % 6 + 1 == 2)
+			count_2++;
+
+		if (rand() % 6 + 1 == 3)
+			count_3++;
+
+		if (rand() % 6 + 1 == 4)
+			count_4++;
+
+		if (rand() % 6 + 1 == 5)
+			count_5++;
+
+		if (rand() % 6 + 1 == 6)
+			count_6++;
+	}
+	printf("%d %d %d %d %d %d\n", count_1, count_2, count_3, count_4, count_5, count_6);
+
+	return 0;
+		
+}
+
+
+
+3번
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int get_random();
+
+int main() 
+{
+	printf("1번째 호출 = %d \n", get_random());
+	printf("2번째 호출 = %d \n", get_random());
+	printf("3번째 호출 = %d \n", get_random());
+	printf("4번째 호출 = %d \n", get_random());
+	printf("5번째 호출 = %d \n", get_random());
+
+	return 0;
+}
+
+int get_random() 
+{
+	static int inited = 0;
+
+	if (inited == 0) 
+	{
+		srand((unsigned) time(NULL));
+		inited = 1;
+	}
+	return rand() % 100 + 1;
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int get_random();
+
+int main() 
+{
+	int n;
+
+	while (1)
+	{
+		printf("%d\n", get_random());
+
+		printf("호출하시겠습니까? (Y: 1) (N: 2)");
+		scanf("%d", &n);
+
+		if (n == 2)
+			break;
+	}
+
+	return 0;
+}
+
+int get_random() 
+{
+	srand((unsigned)time(NULL));
+	
+	return rand() % 100 + 1;
+}
+
+4번
+#include <stdio.h>
+
+double recursive(double n);
+
+int main()
+{
+	double n, result;
+
+	printf("n의 값을 입력하세요: ");
+	scanf("%lf", &n);
+
+	result = recursive(n);
+	printf("%f", result);
+
+	return 0;
+}
+
+double recursive(double n)
+{
+	if (n == 1)
+		return 1;
+	else
+		return ((1 / n) + recursive(n - 1));
+}
+
+5번
+#include <stdio.h>
+#define my_money 5000
+
+int save(int amount);
+int draw(int amount);
+
+int main(void)
+{
+	int n;
+	int i;
+	int money;
+	int amount;
+
+	printf("메뉴를 선택하세요: 저축(1), 인출(2): ");
+	scanf("%d", &n);
+	
+	if (n == 1)
+	{
+		printf("저축할 금액: ");
+		scanf("%d", &amount);
+
+		printf("현재 잔액은 %d입니다. ", save(amount));
+	}
+
+	if (n == 2)
+	{
+		printf("인출할 금액: ");
+		scanf("%d", &amount);
+
+		printf("현재 잔액은 %d입니다. ", draw(amount));
+	}
+
+	return 0;
+}
+
+int save(int amount)
+{
+	int money;
+
+	money = my_money + amount;
+
+	return money;
+}
+
+int draw(int amount)
+{
+	int money;
+
+	money = my_money - amount;
+
+	return money;
+
+}
+
+6번
+#include <stdio.h>
+
+int get_tri_number(int n);
+
+int main() 
+{
+	int n;
+
+	printf("몇번째 삼각수를 계산할까요?: ");
+	scanf("%\d", &n);
+
+	printf("%d \n", get_tri_number(n));
+
+	return 0;
+}
+
+int get_tri_number(int n) 
+{
+	if (n == 1)
+		return 1;
+	else
+		return (n + get_tri_number(n - 1));
+}
+
+7번
+#include <stdio.h>
+
+int recursive(int n, int k)
+{
+	if (n == 1 || n == k)
+		return 1;
+	else 
+		return recursive(n - 1, k - 1) + recursive(n - 1, k);
+}
+int main(void)
+{
+	int n, k;
+
+	printf("두 수를 입력하시오: ");
+	scanf("%d %d", &n, &k);
+
+	printf("%d\n", recursive(n, k));
+
+	return 0;
+}
+
+8번
+#include <stdio.h>
+
+void show_digit(int n);
+
+int main(void)
+{
+	int n;
+
+	printf("정수를 입력하시오: ");
+	scanf("%d", &n);
+
+	show_digit(n);
+
+	return 0;
+}
+
+void show_digit(int n)
+{
+	int a, b, c, d;
+
+	a = (n/1000) % 10;
+	b = (n/100) % 10;
+	c = (n/10) % 10;
+	d = n % 10;
+
+	printf("%d %d %d %d\n", a, b, c, d);
+	
+	return 0;
+}
