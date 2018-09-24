@@ -1,0 +1,116 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 100
+void Min_Heapify(int *A, int i, int heap_size);
+void array_swap(int A[], int a, int b);
+void Build_Heap(int *A, int length);
+void Min_heap_Insert(int *A, int key);
+int Extract_Min(int *A);
+int heap_size = 0;
+
+int main() {
+	int array[MAX] = { 0 };
+
+	Min_heap_Insert(array, 9);
+	Min_heap_Insert(array, 8);
+	Min_heap_Insert(array, 7);
+	Min_heap_Insert(array, 6);
+	Min_heap_Insert(array, 5);
+	Min_heap_Insert(array, 4);
+	Min_heap_Insert(array, 3);
+	Min_heap_Insert(array, 10);
+	Min_heap_Insert(array, 11);
+	Min_heap_Insert(array, 2);
+
+	for (int i = 1; i <= heap_size; i++) {
+		printf("%d ", array[i]);
+	}
+	printf("\n");
+
+	Extract_Min(array);
+	Extract_Min(array);
+	Extract_Min(array);
+
+	for (int i = 1; i <= heap_size; i++) {
+		printf("%d ", array[i]);
+	}
+	printf("\n");
+
+
+	system("pause");
+
+	return 0;
+}
+void Min_heap_Insert(int *A, int key) {
+	heap_size += 1;
+	A[heap_size] = key;
+	int i = heap_size; //문제아 노드의 인덱스
+	int parent = i / 2; //문제아 노드의 부모 인덱스
+	while (i > 1 && A[parent] > A[i]) {
+		array_swap(A, parent, i);
+		i = parent;
+	}
+
+	Build_Heap(A, heap_size);
+}
+
+int Extract_Min(int *A) {
+	if (heap_size < 1) {
+		printf("힙이 존재하지 않습니다.\n");
+		return 0;
+	}
+	int min = A[1];
+	A[1] = A[heap_size];
+	heap_size -= 1;
+	Min_Heapify(A, 1, heap_size);
+
+	return min;
+}
+
+void Build_Heap(int *A, int heap_size) {
+	for (int i = heap_size / 2; i >= 1; i--) //마지막 노드의 부모
+		Min_Heapify(A, i, heap_size);
+}
+
+void array_swap(int A[], int a, int b) {
+	int temp; temp = A[a];
+	A[a] = A[b];
+	A[b] = temp;
+}
+
+void Min_Heapify(int *A, int i, int heap_size) {
+	int left, right, smallest;
+	left = 2 * i;
+	right = 2 * i + 1;
+
+	if (left > heap_size) //A[i]가 자식을 가지고 있지 않다.
+		return;
+	/*자식들 중 작은 index 찾기*/
+	if (right > heap_size) { //자식이 왼쪽밖에 없다.
+		if (A[left] < A[i])
+			smallest = left;
+		else
+			smallest = i;
+	}
+	else { //자식이 둘 다 존재
+		if (A[left] < A[right]) {
+			if (A[left] < A[i])
+				smallest = left;
+			else
+				smallest = i;
+		}
+		else {
+			if (A[right] < A[i])
+				smallest = right;
+			else
+				smallest = i;
+		}
+	}
+
+	if (A[i] <= A[smallest]) //이미 가장 낮다면 return
+		return;
+	else {
+		array_swap(A, i, smallest);
+		Min_Heapify(A, smallest, heap_size);
+	}
+}
