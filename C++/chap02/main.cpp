@@ -40,7 +40,7 @@ using namespace std;
 //}
 //
 //namespace Samsung {
-//    int g_MVar;
+//    int g_SVar;
 //    int Plus(int x, int y){
 //        return (x + y);
 //    };
@@ -55,8 +55,8 @@ using namespace std;
 //    Microsoft::g_MVar = Microsoft::Minus(5, 2);
 //    cout << Microsoft::g_MVar << endl;
 //
-//    Samsung::g_MVar = Samsung::Plus(5, 4);
-//    cout << Samsung::g_MVar;
+//    Samsung::g_SVar = Samsung::Plus(5, 4);
+//    cout << Samsung::g_SVar;
 //
 //    return 0;
 //}
