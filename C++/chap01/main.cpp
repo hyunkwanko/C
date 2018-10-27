@@ -3,12 +3,12 @@
 #include <time.h>
 
 //int main(){
-//    int Num1, Num2;
-//    int Sum = 0;
+//    int Num1, Num2; // 변수 선언
+//    int Sum = 0; // 변수 선언 및 초기화
 //    int i;
 //
-//    printf("2개의 정수 입력: ");
-//    scanf("%d %d", &Num1, &Num2);
+//    printf("2개의 정수 입력: "); // 출력
+//    scanf("%d %d", &Num1, &Num2); // 입력
 //
 //    for(i = Num1; i <= Num2; i++)
 //        Sum += i;
@@ -39,6 +39,12 @@
 //    return 0;
 //}
 
+//int main(){
+//    int num = 5;
+//    printf("변수의 주소 : %d", &num);
+//
+//    return 0;
+//}
 
 //int main(){
 //    int num;
@@ -57,7 +63,6 @@
 //
 //    return 0;
 //}
-
 
 //int main(){
 //    int i, ary[10], *p;
@@ -83,8 +88,8 @@
 //    int var1 = 1;
 //    int var2 = 2;
 //
-//    const int *p1;
-//    int * const p2 = &var1; // pNum의 상수화
+//    const int *p1; // num의 상수화
+//    int * const p2 = &var1; // p2의 상수화
 //
 //    // *p2 = 1이되고 p2가 var1의 주소값이 된다.
 //
@@ -127,7 +132,6 @@
 //    return 0;
 //}
 
-
 struct Node {
     int data;
     struct Node *next;
@@ -140,20 +144,23 @@ int main(){
 
     for (int i = 1; i <= 5; i++){
         Current = (struct Node *)malloc(sizeof(struct Node));
-        Current->data = i * 100;
+        Current->data = i * i * 10;
         Current->next = NULL;
+
         if (pStart == NULL){
             pStart = pEnd = Current;
-            printf("%d\n", Current);
-//          printf("%d, %d\n", pStart->data, pStart->next);
         }
         else {
             pEnd->next = Current;
             pEnd = Current;
         }
-//      printf("%d, %d\n", Current->data, Current->next);
-//      printf("%d, %d\n", pEnd->data, pEnd->next);
-        printf("%d, %d\n", pStart->data, pStart->next);
+        printf("%d ", i);
+        printf("%d ", pStart);
+        printf("(%d, %d) / ", pStart->data, pStart->next);
+        printf("%d ", pEnd);
+        printf("(%d, %d) / ", pEnd->data, pEnd->next);
+        printf("%d ", Current);
+        printf("(%d, %d)\n", Current->data, Current->next);
     }
 
 //    while(pStart != NULL){
