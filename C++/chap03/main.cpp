@@ -1,6 +1,11 @@
 #include <iostream>
 using namespace std;
 
+/*
+ <매크로 인수가 괄호 속에 있는 이유>
+ 인수가 상수나 변수일 수도 있지만 복잡한 수식일 수도 있는데 이 경우 인수 수식 자체가 먼저 평가되어야 하기 때문이다.
+*/
+
 //#define MIN(X, Y) ((X) < (Y) ? (X) : (Y))
 //
 //int main(){
@@ -11,11 +16,10 @@ using namespace std;
 
 //#define MULTI(X, Y) (X * Y)
 //
-//inline int MULTI(int X, int Y) { return (X * Y);}
+//inline int MULTI(int X, int Y) { return (X * Y); }
 //
 //
 //int main(){
-//
 //    cout << MULTI(3, 6);
 //    return 0;
 //}
@@ -33,7 +37,7 @@ using namespace std;
 //int main(){
 //    int var1 = 3;
 //    int var2 = 5;
-//    int &ref = var1; //ref 와 var1은 동일한 변수
+//    int &ref = var1; // ref 와 var1은 동일한 변수
 //
 //    ref = 7;
 //    cout << "var1: " << var1 << ", var2: "
@@ -50,8 +54,9 @@ using namespace std;
 //    int var = 2;
 //    int &ref1 = var; // ref1과 var는 동일
 //    int &ref2 = ref1; // ref2와 ref1이 동일
+//    // 결과적으로 다 동일
 //
-//    ref1 = 7;
+//    ref1 = 2;
 //
 //    cout << "var : " << var << endl;
 //    cout << "ref1 : " << ref1 << endl;
@@ -65,7 +70,8 @@ using namespace std;
 //}
 //
 //int main(){
-//    int (*pSum)(int, int) = sum; // 함수 포인터
+//    int (*pSum)(int, int); // 함수 포인터
+//    pSum = sum;
 //    // int (*pSum)(int, int) = sum; // 함수에 대한 참조
 //    cout << pSum(3, 4) << endl;
 //
@@ -84,7 +90,7 @@ using namespace std;
 //
 //    // 따라서, a = b = c = *p이다.
 //
-//    a = 3;
+//    a = 4;
 //
 //    cout << "a : " << a << endl;
 //    cout << "b : " << b << endl;
@@ -119,7 +125,7 @@ using namespace std;
 //    return 0;
 //}
 
-//void swap(int &x, int &y){ // 포인터 활용
+//void swap(int &x, int &y){ // 참조와 함수
 //    int temp = x;
 //    x = y;
 //    y = temp;
@@ -184,8 +190,7 @@ using namespace std;
 //    min(a, b) = 5; // 값이 작은 a에 5 대입 -> a = 5와 동일
 //
 //    cout << "a = " << a << endl;
-//    cout << "b = " << b << endl;
-//    cout << "gkgkgk";
+//    cout << "b = " << b;
 //
 //    return 0;
 //}
@@ -206,3 +211,36 @@ using namespace std;
 //
 //    return 0;
 //}
+
+//int &GetVar(void){
+//    int var = 5;
+//    return var;
+//}
+//
+//int main(){
+//    int &value = GetVar();
+//    value = 3;
+//
+//    cout << value << endl;
+//
+//    return 0;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
