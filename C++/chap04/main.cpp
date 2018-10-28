@@ -2,6 +2,22 @@
 using namespace std;
 
 //class Car{
+//public:
+//    int m_motor;
+//    int m_CC;
+//    int m_speed;
+//};
+//
+//int main(){
+//    Car c1;
+//    int *p = (int *)malloc(sizeof(int) * 3);
+//    c1.m_speed=100;
+//    cout << p;
+//    free(p);
+//    return 0;
+//}
+
+//class Car{
 //private:
 //    int m_color;
 //    int m_CC;
@@ -29,11 +45,9 @@ using namespace std;
 //    int y;
 //
 //public:
-//    CPoint(int a, int b = 0) { x = a; y = b; }
+//    CPoint(int a, int b = 0) { x = a; y = b; } // 생성자
 ////    CPoint(int a) { x = a; y = 0; }
-//    void Print(){
-//        cout << "(" << x << ", " << y << ")" << endl;
-//    }
+//    void Print(){ cout << "(" << x << ", " << y << ")" << endl; }
 //};
 //
 //int main(){
@@ -45,6 +59,22 @@ using namespace std;
 //    P2.Print();
 //    P3.Print();
 //
+//    return 0;
+//}
+
+//class CPoint{
+//    int x, y;
+//public:
+//    CPoint(int a, int b) { x = a; y = b; }
+//    CPoint() { x = 0; y = 0; }
+//    void Print(){ cout << "(" << x << ", " << y << ")" << endl; }
+//};
+//
+//int main(){
+//    CPoint P1(3, 4);
+//    CPoint P2;
+//    P1.Print();
+//    P2.Print();
 //    return 0;
 //}
 
@@ -99,27 +129,20 @@ using namespace std;
 //    return 0;
 //}
 
-//class CPoint {
+//class CPoint{
 //private:
-//    int x;
-//    int y;
-//
+//    int x, y;
 //public:
-//    CPoint(int a, int b) {
-//        x = a;
-//        y = b;
-//    }
-//    void Print(){
-//        cout << "(" << x << ", " << y << ")" << endl;
-//    }
+//    CPoint() { x = 0; y = 3; }
+//    ~CPoint(){};
+//    void SetXY(int a, int b) { x = a; y = b; }
+//    void Print() { cout << "(" << x << ", " << y << ")"; }
 //};
 //
 //int main(){
-//    CPoint P1(3, 4);
-////    CPoint P2;
-//
+//    CPoint P1;
+//    P1.SetXY(3, 4);
 //    P1.Print();
-////    P2.Print();
 //
 //    return 0;
 //}
