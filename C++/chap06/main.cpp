@@ -53,6 +53,10 @@ using namespace std;
 //    char *str;
 //
 //public:
+//    /*
+//     모든 객체의 *str이 동일한 메모리 주소를 가리킨다. 소멸자가 수행될 때 동일한 주소에 대한
+//     delete 시도로 인해 에러가 발생한다.
+//    */
 //    CString(char * s = "Unknown"){
 //        len = strlen(s);
 //        str = new char[len + 1];
@@ -76,18 +80,52 @@ using namespace std;
 //    return 0;
 //}
 
+//class CString {
+//private:
+//    int len;
+//    char *str;
+//
+//public:
+//    CString(const CString &string){ // 복사 생성자 -> 참조에 의한 전달
+//        len = string.len;
+//        str = new char[len + 1];
+//        strcpy(str, string.str);
+//    }
+//    CString(char *s = "Unknown"){
+//        len = strlen(s);
+//        str = new char[len + 1];
+//        strcpy(str, s);
+//    }
+//    ~CString() { delete [] str; }
+//    void Print() { cout << str << endl; }
+//};
+//
+//void ShowString(CString str){
+//    str.Print();
+//}
+//
+//int main(){
+//    CString str1 = "C++ Programming";
+//    CString str2 = str1;
+//
+//    str1.Print();
+//    ShowString(str2);
+//
+//    return 0;
+//}
+
 class CString {
 private:
     int len;
     char *str;
 
 public:
-    CString(const CString &string){ // 복사 생성자 -> 참조에 의한 전달
+    CString(const CString &string){
         len = string.len;
         str = new char[len + 1];
         strcpy(str, string.str);
     }
-    CString(char * s = "Unknown"){
+    CString(char *s = "Unknown"){ // 객체 반환에 따른 복사 생성
         len = strlen(s);
         str = new char[len + 1];
         strcpy(str, s);
@@ -96,23 +134,18 @@ public:
     void Print() { cout << str << endl; }
 };
 
-void ShowString(CString str){
-    str.Print();
+CString GetString(){
+    CString str("Current String");
+    return str;
 }
 
 int main(){
-    CString str1 = "C++ Programming";
-    CString str2 = str1;
+    CString str1 = GetString();
 
     str1.Print();
-    ShowString(str2);
 
     return 0;
 }
-
-
-
-
 
 
 

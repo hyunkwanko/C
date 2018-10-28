@@ -24,21 +24,21 @@
     <session id="938549990">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.0" value="1" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.0" value="5" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="2658" />
+          <entry key="cpp" value="3036" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="ObjectiveC" value="2658" />
+          <entry key="ObjectiveC" value="3036" />
         </counts>
       </usages-collector>
     </session>
@@ -53,11 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-              <folding>
-                <marker date="1540719250365" expanded="true" signature="979:1537" ph="..." />
-              </folding>
+            <state relative-caret-position="696">
+              <caret line="271" selection-start-line="271" selection-end-line="271" />
             </state>
           </provider>
         </entry>
@@ -77,10 +74,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="850" />
-    <option name="width" value="830" />
-    <option name="height" value="1050" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="956" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -137,23 +134,26 @@
       <updated>1539912658957</updated>
       <workItem from="1539912660230" duration="2272000" />
       <workItem from="1540628845422" duration="3650000" />
-      <workItem from="1540715717940" duration="3189000" />
+      <workItem from="1540715717940" duration="3278000" />
+      <workItem from="1540744118407" duration="1237000" />
+      <workItem from="1540746829350" duration="4000" />
+      <workItem from="1540746856598" duration="20000" />
+      <workItem from="1540746881875" duration="18000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9111000" />
+    <option name="totallyTimeSpent" value="10479000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="850" y="0" width="830" height="1050" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1680" height="956" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49881518" visible="true" weight="0.32959184" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49881518" weight="0.32959184" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -216,11 +216,8 @@ int main(){
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-          <folding>
-            <marker date="1540719250365" expanded="true" signature="979:1537" ph="..." />
-          </folding>
+        <state relative-caret-position="696">
+          <caret line="271" selection-start-line="271" selection-end-line="271" />
         </state>
       </provider>
     </entry>

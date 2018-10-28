@@ -224,24 +224,51 @@ using namespace std;
 //    return 0;
 //}
 
-class CNumber {
-private:
-    int x;
+//class CNumber {
+//private:
+//    int x;
+//
+//public:
+//    CNumber() : x(0) {}
+//    explicit CNumber(int a) : x(a) {}
+//    void Print() { cout << x << endl; }
+//};
+//
+//int main(){
+//    CNumber N1;
+//    N1.Print();
+//    CNumber N2(1);
+//    N2.Print();
+//    CNumber N3 = CNumber(2);
+//    N3.Print();
+//    //CNumber N4 = 3; 3 -> CNumber(3) 묵시적 형변환
+//    //N4.Print();
+//    return 0;
+//}
 
+class CPoint {
+private:
+    int x, y;
 public:
-    CNumber() : x(0) {}
-    explicit CNumber(int a) : x(a) {}
-    void Print() { cout << x << endl; }
+    CPoint(int a, int b) : x(a), y(b) {}
+    friend void Print(CPoint P);
+    friend void Set(CPoint P);
 };
 
+void Print(CPoint P){
+    cout << P.x << " " << P.y << endl;
+}
+
+void Set(CPoint P){
+    cout << "좌표 입력";
+    cin >> P.x >> P.y;
+    Print(P);
+}
+
 int main(){
-    CNumber N1;
-    N1.Print();
-    CNumber N2(1);
-    N2.Print();
-    CNumber N3 = CNumber(2);
-    N3.Print();
-    //CNumber N4 = 3; 3 -> CNumber(3) 묵시적 형변환
-    //N4.Print();
+    CPoint P1(3, 4);
+    Print(P1);
+    Set(P1);
+
     return 0;
 }

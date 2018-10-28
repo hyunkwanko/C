@@ -195,22 +195,22 @@ using namespace std;
 //    return 0;
 //}
 
-//int &GetArray(int *ary, int index){
-//    return ary[6-index];
-//}
-//
-//int main(){
-//    int i;
-//    int ary[5];
-//
-//    for(i = 0; i < 5; i++)
-//        GetArray(ary, i) = i * i; // ary[i] = i * i와 동일
-//
-//    for(i = 0; i < 5; i++)
-//        cout << "arr[" << i << "] " << GetArray(ary, i) << endl;
-//
-//    return 0;
-//}
+int &GetArray(int *ary, int index){
+    return ary[4-index];
+}
+
+int main(){
+    int i;
+    int ary[5];
+
+    for(i = 0; i < 5; i++)
+        GetArray(ary, i) = i * i; // ary[i] = i * i와 동일
+
+    for(i = 0; i < 5; i++)
+        cout << "arr[" << i << "] " << GetArray(ary, i) << endl;
+
+    return 0;
+}
 
 //int &GetVar(void){
 //    int var = 5;

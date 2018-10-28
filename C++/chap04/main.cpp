@@ -65,8 +65,7 @@ using namespace std;
 //class CPoint{
 //    int x, y;
 //public:
-//    CPoint(int a, int b) { x = a; y = b; }
-//    CPoint() { x = 0; y = 0; }
+//    CPoint(int a = 0, int b = 0) { x = a; y = b; }
 //    void Print(){ cout << "(" << x << ", " << y << ")" << endl; }
 //};
 //
@@ -133,14 +132,15 @@ using namespace std;
 //private:
 //    int x, y;
 //public:
-//    CPoint() { x = 0; y = 3; }
+//    CPoint(int a = 0, int b = 0) { x = a; y = b; }
 //    ~CPoint(){};
 //    void SetXY(int a, int b) { x = a; y = b; }
-//    void Print() { cout << "(" << x << ", " << y << ")"; }
+//    void Print() { cout << "(" << x << ", " << y << ")" << endl; }
 //};
 //
 //int main(){
 //    CPoint P1;
+//    P1.Print();
 //    P1.SetXY(3, 4);
 //    P1.Print();
 //

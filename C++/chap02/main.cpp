@@ -156,25 +156,25 @@ using namespace std;
 //int main() {
 //    int **p;
 //    int i, j;
-//    p = new int *[4];
+//    p = new int *[100];
 //
-//    for (i = 0; i < 4; i++)
-//        p[i] = new int[5];
+//    for (i = 0; i < 100; i++)
+//        p[i] = new int[500];
 //
-//    for (i = 0; i < 4; i++) {
-//        for (j = 0; j < 5; j++) {
+//    for (i = 0; i < 100; i++) {
+//        for (j = 0; j < 500; j++) {
 //            p[i][j] = i + j;
 //        }
 //    }
 //
-//    for (i = 0; i < 4; i++) {
-//        for (j = 0; j < 5; j++) {
+//    for (i = 0; i < 100; i++) {
+//        for (j = 0; j < 500; j++) {
 //            cout << p[i][j] << "\t";
 //        }
 //        cout << endl;
 //    }
 //
-//    for (i = 0; i < 4; i++)
+//    for (i = 0; i < 100; i++)
 //        delete [] p[i];
 //    delete [] p;
 //
