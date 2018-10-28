@@ -132,7 +132,7 @@ using namespace std;
 //
 //public:
 //    CPoint(int a, int b) : x(a), y(b) {}
-//    void Move(int a, int b) { x += a; y += b; }
+//    void Move(int a, int b) { this->x += a; this->y += b; }
 //    void Print() { cout << "(" << x << ", " << y << ")" << endl; }
 //};
 //
@@ -175,29 +175,31 @@ using namespace std;
 //    return 0;
 //}
 
-class CPoint{
-private:
-    int x;
-    int y;
 
-public:
-    CPoint(int a = 0, int b = 0) : x(a), y(b) {}
-    friend void Center(CPoint P1, CPoint P2);
-};
 
-void Center(CPoint P1, CPoint P2){
-    CPoint P;
-    P.x = (P1.x + P2.x) / 2;
-    P.y = (P1.y + P2.y) / 2;
-    cout << "중심 : " << "(" << P.x << ", " << P.y << ")" << endl;
-}
-
-int main(){
-    CPoint P1(1, 2), P2(5, 6);
-    Center(P1, P2);
-
-    return 0;
-}
+//class CPoint{
+//private:
+//    int x;
+//    int y;
+//
+//public:
+//    CPoint(int a = 0, int b = 0) : x(a), y(b) {}
+//    friend void Center(CPoint P1, CPoint P2);
+//};
+//
+//void Center(CPoint P1, CPoint P2){
+//    CPoint P;
+//    P.x = (P1.x + P2.x) / 2;
+//    P.y = (P1.y + P2.y) / 2;
+//    cout << "중심 : " << "(" << P.x << ", " << P.y << ")" << endl;
+//}
+//
+//int main(){
+//    CPoint P1(1, 2), P2(5, 6);
+//    Center(P1, P2);
+//
+//    return 0;
+//}
 
 
 
