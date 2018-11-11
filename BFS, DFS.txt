@@ -1,0 +1,79 @@
+#include "Queue.h"
+#define MAX 6
+#define VISITED 2
+#define ADJACENCY 1
+
+int G[MAX][MAX]; // init adjacency matrix
+int visit[MAX]; // to check whether visited or not
+void print_map(int n);
+void DFS(int v);
+void BFS(int v);
+
+int n; //vertices
+
+int main() {
+	int start;
+	FILE *fp = fopen("data.txt", "r");
+	if (fp == NULL)
+		return 0;
+	fscanf(fp, "%d", &n);
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			fscanf(fp, "%d", &G[i][j]);
+		}
+	}
+
+	print_map(n);
+	printf("시작 위치: ");
+	scanf("%d", &start);
+	//DFS(start); // DFS
+	BFS(start); // BFS
+
+	fclose(fp);
+	system("pause");
+	return 0;
+}
+
+void BFS(int v) {
+	struct Queue* queue = createQueue(1000);
+
+	enqueue(queue, v); // insert a data into the queue.
+
+	while (!isEmpty(queue)) {
+		v = dequeue(queue); // pick up the vertical from the queue.
+		visit[v] = VISITED; // mark this vertical as VISITED.
+		for (int i = 0; i < n; i++) {
+			// find a adjacency vertical that have never visited before.
+			if (!visit[i] && G[v][i] == ADJACENCY) {
+				// insert the vertical that has found into the queue.
+				enqueue(queue, i);
+				printf("%d에서 %d로 이동\n", v, i);
+			}
+		}
+	}
+}
+
+void print_map(int n) {
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			printf("%d ", G[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+void DFS(int v) {
+	int i;
+	visit[v] = VISITED; // mark this vertical as VISITED.
+
+	for (i = 0; i < MAX; i++) {
+		// find a adjacency vertical that have never visited before
+		if (!visit[i] && G[v][i] == ADJACENCY) {
+			// if find the vertical, mark it as VISITED.
+			visit[i] = VISITED;
+			printf("%d에서 %d로 이동\n", v, i);
+			// recall this function with the vertical.
+			DFS(i);
+		}
+	}
+}
