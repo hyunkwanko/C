@@ -1,5 +1,5 @@
-#include <iostream>
-using namespace std;
+//#include <iostream>
+//using namespace std;
 
 /* 예제 1 */
 //class CPoint {
@@ -151,3 +151,51 @@ using namespace std;
 //    P3.Print();
 //    return 0;
 //}
+
+/* 예제 8 */
+#include <cstdio>
+using namespace std;
+
+char *endl = "\n";
+char *tab = "\t";
+
+class ostream {
+public :
+    ostream &operator<<(int val) { // int 값에 대한 출력 연산자(<<) 오버로딩
+        printf("%d", val);
+        return (*this);
+    }
+    ostream &operator<<(char *str) {// char * 값에 대한 << 연산자 오버로딩
+        printf("%s", str);
+        return (*this);
+    }
+};
+
+class istream {
+public :
+    istream &operator>>(int &val) { // int 값에 대한 >> 연산자 오버로딩
+        scanf("%d", &val);
+        return (*this);
+    }
+    istream &operator>>(char *str) {// char * 값에 대한 >> 연산자 오버로딩
+        scanf("%s", str);
+        return (*this);
+    }
+};
+
+ostream cout;
+istream cin;
+
+int main(void)
+{
+    int a = 5;
+
+    char str[] = "C++ Programming";
+
+    cout << a << tab << str << endl;
+
+    cout << "입력 : ";
+    cin >> a >> str;
+    cout << a << tab << str << endl;
+    return 0;
+}
