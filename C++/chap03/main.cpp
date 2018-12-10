@@ -3,7 +3,7 @@ using namespace std;
 
 /*
  <매크로 인수가 괄호 속에 있는 이유>
- 인수가 상수나 변수일 수도 있지만 복잡한 수식일 수도 있는데 이 경우 인수 수식 자체가 먼저 평가되어야 하기 때문이다.
+ 인수가 상수나 변수일 수도 있지만 복잡한 수식일 수도 있는데, 이 경우 인수 수식 자체가 먼저 평가되어야 하기 때문이다.
 */
 
 //#define MIN(X, Y) ((X) < (Y) ? (X) : (Y))
@@ -196,7 +196,7 @@ using namespace std;
 //}
 
 int &GetArray(int *ary, int index){
-    return ary[4-index];
+    return ary[index];
 }
 
 int main(){

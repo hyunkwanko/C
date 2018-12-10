@@ -93,38 +93,38 @@ using namespace std;
 //    return 0;
 //}
 
-//class CPoint {
-//private:
-//    int x, y;
-//
-//public:
-//    CPoint() : x(0), y(0) {}
-//    CPoint(int a) : x(a), y(a) {}
-//    CPoint(int a, int b) : x(a), y(b) {}
-//    void Print() { cout << "(" << x << ", " << y << ") "; }
-//};
-//
-//int main(){
-//    CPoint *ptr;
-//
-//    ptr = new CPoint;
-//    ptr->Print();
-//    delete ptr;
-//
-//    ptr = new CPoint();
-//    ptr->Print();
-//    delete ptr;
-//
-//    ptr = new CPoint(1);
-//    ptr->Print();
-//    delete ptr;
-//
-//    ptr = new CPoint(2, 3);
-//    ptr->Print();
-//    delete ptr;
-//
-//    return 0;
-//}
+class CPoint {
+private:
+    int x, y;
+
+public:
+    CPoint() : x(0), y(0) {}
+    CPoint(int a) : x(a), y(a) {}
+    CPoint(int a, int b) : x(a), y(b) {}
+    void Print() { cout << "(" << x << ", " << y << ") "; }
+};
+
+int main(){
+    CPoint *ptr;
+
+    ptr = new CPoint;
+    ptr->Print();
+    delete ptr;
+
+    ptr = new CPoint();
+    ptr->Print();
+    delete ptr;
+
+    ptr = new CPoint(1);
+    ptr->Print();
+    delete ptr;
+
+    ptr = new CPoint(2, 3);
+    ptr->Print();
+    delete ptr;
+
+    return 0;
+}
 
 //class CPoint {
 //private:
@@ -246,29 +246,29 @@ using namespace std;
 //    return 0;
 //}
 
-class CPoint {
-private:
-    int x, y;
-public:
-    CPoint(int a, int b) : x(a), y(b) {}
-    friend void Print(CPoint P);
-    friend void Set(CPoint P);
-};
-
-void Print(CPoint P){
-    cout << P.x << " " << P.y << endl;
-}
-
-void Set(CPoint P){
-    cout << "좌표 입력";
-    cin >> P.x >> P.y;
-    Print(P);
-}
-
-int main(){
-    CPoint P1(3, 4);
-    Print(P1);
-    Set(P1);
-
-    return 0;
-}
+//class CPoint {
+//private:
+//    int x, y;
+//public:
+//    CPoint(int a, int b) : x(a), y(b) {}
+//    friend void Print(CPoint P);
+//    friend void Set(CPoint P);
+//};
+//
+//void Print(CPoint P){
+//    cout << P.x << " " << P.y << endl;
+//}
+//
+//void Set(CPoint P){
+//    cout << "좌표 입력";
+//    cin >> P.x >> P.y;
+//    Print(P);
+//}
+//
+//int main(){
+//    CPoint P1(3, 4);
+//    Print(P1);
+//    Set(P1);
+//
+//    return 0;
+//}

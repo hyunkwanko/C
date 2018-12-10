@@ -4,7 +4,7 @@
 /* 예제 1 */
 //class CPoint {
 //private:
-//    int x,y;
+//    int x, y;
 //public:
 //    CPoint(int a = 0, int b = 0) : x(a), y(b) {}
 //    CPoint Sum(const CPoint &Po) { return CPoint(x + Po.x, y + Po.y); }
@@ -27,7 +27,7 @@
 //    int x,y;
 //public:
 //    CPoint(int a = 0, int b = 0) : x(a), y(b) {}
-//    CPoint operator+(const CPoint &Po) { return CPoint(x + Po.x, y + Po.y); }
+//    CPoint operator+(const CPoint &Po) { return CPoint(x + Po.x, y + Po.y); } // 덧셈 연산자 오버로딩
 //    void Print() { cout << "(" << x << ", " << y << ")" << endl; }
 //};
 //
@@ -52,7 +52,7 @@
 //    friend CPoint operator+(const CPoint &Po1, const CPoint &Po2);
 //};
 //
-//CPoint operator+(const CPoint &Po1, const CPoint &Po2){
+//CPoint operator+(const CPoint &Po1, const CPoint &Po2){ // 전역 함수에 의한 연산자 오버로딩
 //    return CPoint(Po1.x + Po2.x, Po1.y + Po2.y);
 //}
 //
@@ -66,12 +66,12 @@
 //    return 0;
 //}
 
-/* 예제 4 */
+/* 7장 - 8 */
 //class CPoint {
 //private :
 //    int x, y;
 //public :
-//    CPoint(int a = 0,int b = 0):x(a),y(b){}
+//    CPoint(int a = 0, int b = 0): x(a), y(b) {}
 //    CPoint operator+(const CPoint &Po) { return CPoint(x + Po.x, y + Po.y); }
 //    CPoint operator+(int a) { return CPoint(x + a, y + a); }
 //    CPoint operator-(const CPoint &Po) { return CPoint(x - Po.x, y - Po.y); }

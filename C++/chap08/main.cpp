@@ -2,15 +2,15 @@
 using namespace std;
 #define PI 3.14
 
+// base와 derived 클래스의 관계는 상대적인 개념!
+
 /* 예제 1 */
 //class CCricle {
 //public:
 //    int x, y;
 //    double Radius;
 //public:
-//    double GetArea() {
-//        return (PI * Radius * Radius);
-//    }
+//    double GetArea() { return (PI * Radius * Radius); }
 //};
 //
 //class CSphere : public CCricle { // CCircle로부터 상속
@@ -36,11 +36,13 @@ using namespace std;
 
 /* 예제 2 */
 //class CCircle {
-//protected :
+//protected: // 외부 접근 허용하지 않음 -> private과 동일, derived 클래스에서의 접근 허용 -> public과 동
 //    int x, y; double Radius;
 //public :
 //    CCircle(int a, int b, double r) : x(a), y(b), Radius(r) { }
-//    double GetArea() { return (PI * Radius * Radius); } };
+//    double GetArea() { return (PI * Radius * Radius); }
+//};
+//
 //class CSphere : public CCircle {
 //private :
 //    int z;
@@ -69,6 +71,8 @@ private :
     int z;
 public :
     CSphere(int a, int b, int c, double r) : CCircle(a, b, r), z(c) { }
+//    double GetArea() { return (4 * PI * Radius * Radius); } // 함수 재정
+    double GetArea() { return (4 * CCircle::GetArea()); } // 함수 재정의
     double GetVolume() { return ((4.0/3.0) * PI * Radius * Radius * Radius); }
 };
 
