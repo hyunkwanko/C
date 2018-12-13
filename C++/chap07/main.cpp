@@ -153,49 +153,118 @@
 //}
 
 /* 예제 8 */
-#include <cstdio>
+//#include <cstdio>
+//using namespace std;
+//
+//char *endl = "\n";
+//char *tab = "\t";
+//
+//class ostream {
+//public :
+//    ostream &operator<<(int val) { // int 값에 대한 출력 연산자(<<) 오버로딩
+//        printf("%d", val);
+//        return (*this);
+//    }
+//    ostream &operator<<(char *str) {// char * 값에 대한 << 연산자 오버로딩
+//        printf("%s", str);
+//        return (*this);
+//    }
+//};
+//
+//class istream {
+//public :
+//    istream &operator>>(int &val) { // int 값에 대한 >> 연산자 오버로딩
+//        scanf("%d", &val);
+//        return (*this);
+//    }
+//    istream &operator>>(char *str) {// char * 값에 대한 >> 연산자 오버로딩
+//        scanf("%s", str);
+//        return (*this);
+//    }
+//};
+//
+//ostream cout;
+//istream cin;
+//
+//int main(void)
+//{
+//    int a = 5;
+//
+//    char str[] = "C++ Programming";
+//
+//    cout << a << tab << str << endl;
+//
+//    cout << "입력 : ";
+//    cin >> a >> str;
+//    cout << a << tab << str << endl;
+//    return 0;
+//}
+
+
+
+
+#include <iostream>
 using namespace std;
 
-char *endl = "\n";
-char *tab = "\t";
+class CPoint{
+private :
+    int x, y;
 
-class ostream {
 public :
-    ostream &operator<<(int val) { // int 값에 대한 출력 연산자(<<) 오버로딩
-        printf("%d", val);
-        return (*this);
-    }
-    ostream &operator<<(char *str) {// char * 값에 대한 << 연산자 오버로딩
-        printf("%s", str);
-        return (*this);
-    }
+    CPoint(int a, int b) : x(a), y(b) {}
+    friend ostream &operator<<(ostream &out, const CPoint Po);
+    friend istream &operator>>(istream &in, CPoint &Po);
 };
 
-class istream {
-public :
-    istream &operator>>(int &val) { // int 값에 대한 >> 연산자 오버로딩
-        scanf("%d", &val);
-        return (*this);
-    }
-    istream &operator>>(char *str) {// char * 값에 대한 >> 연산자 오버로딩
-        scanf("%s", str);
-        return (*this);
-    }
-};
+ostream &operator<<(ostream &out, const CPoint Po){
+    out<< "(" << Po.x << ", " << Po.y << ")" << endl;
+    return out;
+}
 
-ostream cout;
-istream cin;
+istream &operator>>(istream &in, CPoint &Po){
+    cout<<"좌표입력:";
+    in >> Po.x >> Po.y;
+    return in;
+}
 
-int main(void)
-{
-    int a = 5;
 
-    char str[] = "C++ Programming";
-
-    cout << a << tab << str << endl;
-
-    cout << "입력 : ";
-    cin >> a >> str;
-    cout << a << tab << str << endl;
+int main(void){
+    CPoint P1(3, 4);
+    cout << P1;
+    cin >> P1;
+    cout << P1;
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

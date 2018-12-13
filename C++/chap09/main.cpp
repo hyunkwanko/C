@@ -31,7 +31,7 @@ using namespace std;
 //    return 0;
 //};
 
-/* 8장 - 17 */
+/* 9장 - 17 */
 class base{
 private:
     int x;
@@ -45,7 +45,6 @@ class derived : public base{
 private:
     int y;
 public:
-//    void func1() { cout << "derived::func1" << endl; }
     void func2() { cout << "derived::func2" << endl; }
 };
 
@@ -63,11 +62,43 @@ int main(){
     return 0;
 }
 
-
-
-
-
-
+//class CString {
+//private :
+//    char *pStr;
+//    int len;
+//public :
+//    CString(char *str){
+//        len=strlen(str);
+//        pStr= new char[len+1];
+//        strcpy(pStr, str);
+//        cout << "CString 생성자" << endl;
+//    }
+//    virtual ~CString() { delete [] pStr; cout << "CString 소멸자" << endl; }
+//};
+//
+//class CMyString : public CString {
+//private :
+//    char *pMyStr;
+//    int MyLen;
+//public :
+//    CMyString(char *str1, char *str2) : CString(str1) {
+//        MyLen = strlen(str2);
+//        pMyStr = new char[MyLen + 1];
+//        strcpy(pMyStr, str2);
+//        cout << "CMyString 생성자" << endl;
+//    }
+//
+//    ~CMyString() {
+//        delete[] pMyStr;
+//        cout << "CMyString 소멸자" << endl;
+//    }
+//};
+//
+//int main(void) {
+//    CString *pStr = new CMyString("CString", "CMyString");
+//    delete pStr;
+//    return 0;
+//}
 
 
 
